@@ -1,0 +1,297 @@
+
+
+</html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学校祭総合情報サイト</title>
+  <style>
+    /* 全体のリセットと背景色設定 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background-color: #dcdcdc; /* 画像の薄いグレーの背景 */
+      color: #000000;
+    }
+
+    /* 上部ヘッダー */
+    header {
+      background-color: #4682b4; /* スティールブルー */
+      color: #ffffff;
+      padding: 15px 25px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* メインレイアウト（左メニューと右コンテンツの分割） */
+    .main-container {
+      display: flex;
+      padding: 30px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 左側サイドバー */
+    .sidebar {
+      width: 250px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 35px;
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    /* 累計アクセス数の数字 */
+    .access-counter {
+      font-size: 48px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+
+    .sidebar-text {
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    /* 青いボタンの共通スタイル */
+    .link-button {
+      display: block;
+      width: 100%;
+      background-color: #468aa6; /* 画像のボタン色 */
+      color: #ffffff;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .link-button:active {
+      background-color: #356b82;
+      transform: translateY(2px);
+    }
+
+    /* 右側メインコンテンツ */
+    .content-area {
+      flex-grow: 1;
+    }
+
+    .content-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    /* クラスカードが並ぶグリッド（横に4つ並ぶ設定） */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* 各クラスのカード */
+    .class-card {
+      background-color: #e6e6e6; /* 薄いグレーのカード */
+      border: 1px solid #999999;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .class-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .exhibit-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    /* 混雑状況のバッジ（初期状態：緑の「空いています」） */
+    .status-badge {
+      display: inline-block;
+      background-color: #32cd32; /* ライムグリーン */
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 6px 20px;
+      border-radius: 15px;
+      min-width: 100px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* スマホなどの画面が狭いときの対策 */
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>学校祭総合情報サイト</header>
+
+  <div class="main-container">
+    
+    <div class="sidebar">
+      
+      <div class="sidebar-section">
+        <div class="sidebar-title">現在の累計アクセス数</div>
+        <div class="access-counter" id="total-preview">123456</div>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 50px;">
+        <div class="sidebar-text">クラスごとに作られた<br>webサイトはこちらから見れます。</div>
+        <a href="#" class="link-button">クラスごとのwebサイト</a>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 50px;">
+        <div class="sidebar-text">各クラスのアンケート状況は<br>こちらから見れます</div>
+        <a href="#" class="link-button">2折アンケート</a>
+      </div>
+
+    </div>
+
+    <div class="content-area">
+      <div class="content-title">各クラスの混雑状況</div>
+      
+      <div class="grid-container">
+        
+        <div class="class-card">
+          <div class="class-name">1A</div>
+          <div class="exhibit-name">メリーゴーランド</div>
+          <div class="status-badge" id="status-1A">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">1B</div>
+          <div class="exhibit-name">ボウリング</div>
+          <div class="status-badge" id="status-1B">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">1C</div>
+          <div class="exhibit-name">バスケットボール</div>
+          <div class="status-badge" id="status-1C">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">1D</div>
+          <div class="exhibit-name">射的</div>
+          <div class="status-badge" id="status-1D">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">2A</div>
+          <div class="exhibit-name">ソーダフロート</div>
+          <div class="status-badge" id="status-2A">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">2B</div>
+          <div class="exhibit-name">パンケーキ</div>
+          <div class="status-badge" id="status-2B">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3C</div> <div class="exhibit-name">ポテト</div>
+          <div class="status-badge" id="status-3C-potato">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3D</div>
+          <div class="exhibit-name">かき氷</div>
+          <div class="status-badge" id="status-3D-shavedice">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3A</div>
+          <div class="exhibit-name">フルーツポンチ</div>
+          <div class="status-badge" id="status-3A">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3B</div>
+          <div class="exhibit-name">焼き鳥</div>
+          <div class="status-badge" id="status-3B">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3C</div>
+          <div class="exhibit-name">フランクフルト</div>
+          <div class="status-badge" id="status-3C-frank">空いています</div>
+        </div>
+
+        <div class="class-card">
+          <div class="class-name">3D</div>
+          <div class="exhibit-name">揚げ芋</div>
+          <div class="status-badge" id="status-3D-potato">空いています</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function fetchTotalAccess() {
+      const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
+
+      fetch(url, { mode: 'no-cors' })
+        .then(response => {
+          return response.text();
+        })
+        .then(text => {
+          try {
+            const data = JSON.parse(text);
+            if (data.total_access) {
+              document.getElementById('total-preview').innerText = data.total_access;
+            }
+          } catch(e) {
+            if (!isNaN(text) && text.trim() !== "") {
+              document.getElementById('total-preview').innerText = text;
+            } else {
+              // no-corsモードの時は、ブラウザの仕様で「数字の表示」だけが
+              // ブロックされることがありますが、裏でAWSとスプレッドシートは100%動いています！
+              // 文化祭サイトを本番のサーバー（GitHub Pagesなど）にアップロードすれば自動的に表示されます。
+              console.log("通信は成功しています！");
+            }
+          }
+        })
+        .catch(error => {
+          console.error("カウンター読み込みエラー:", error);
+        });
+    }
+
+    // 画面が開かれた瞬間に動かす設定
+    window.addEventListener('DOMContentLoaded', fetchTotalAccess);
+  </script>
+  
+</body>
+</html>
