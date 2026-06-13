@@ -259,37 +259,31 @@
 
   </div>
 
-  <script>
+<script>
     function fetchTotalAccess() {
+      // あなたのAPI GatewayのURL（後ろに文字がつかないシンプルなもの）
       const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
 
-      fetch(url, { mode: 'no-cors' })
+      // 💡 必ず 'cors' に戻してください！ネット上（HTTPS）ならこれで動きます！
+      fetch(url, { mode: 'cors' })
         .then(response => {
-          return response.text();
+          if (!response.ok) {
+            throw new Error('ネットワークエラー');
+          }
+          return response.json();
         })
-        .then(text => {
-          try {
-            const data = JSON.parse(text);
-            if (data.total_access) {
-              document.getElementById('total-preview').innerText = data.total_access;
-            }
-          } catch(e) {
-            if (!isNaN(text) && text.trim() !== "") {
-              document.getElementById('total-preview').innerText = text;
-            } else {
-              // no-corsモードの時は、ブラウザの仕様で「数字の表示」だけが
-              // ブロックされることがありますが、裏でAWSとスプレッドシートは100%動いています！
-              // 文化祭サイトを本番のサーバー（GitHub Pagesなど）にアップロードすれば自動的に表示されます。
-              console.log("通信は成功しています！");
-            }
+        .then(data => {
+          if (data.total_access) {
+            // 画面のダミー数字「123456」を、本物の数字に書き換える
+            document.getElementById('total-preview').innerText = data.total_access;
           }
         })
         .catch(error => {
           console.error("カウンター読み込みエラー:", error);
+          document.getElementById('total-preview').innerText = "---";
         });
     }
 
-    // 画面が開かれた瞬間に動かす設定
     window.addEventListener('DOMContentLoaded', fetchTotalAccess);
   </script>
   
