@@ -163,7 +163,7 @@
       
       <div class="sidebar-section">
         <div class="sidebar-title">現在の累計アクセス数</div>
-        <div class="access-counter" id="total-preview">読み込み中</div>
+        <div class="access-counter" id="total-preview">0</div>
       </div>
 
       <div class="sidebar-section" style="margin-top: 50px;">
@@ -184,9 +184,9 @@
       <div class="grid-container">
         
         <div class="class-card">
-          <div class="class-name">1A</div>
-          <div class="exhibit-name">メリーゴーランド</div>
-          <div class="status-badge" id="status-1A">空いています</div>
+         <h2>1年A組</h2>
+         <h4>メリーゴーランド</h4>
+         <span id="1A-status" class="status-badge">読み込み中...</span></p>
         </div>
 
         <div class="class-card">
@@ -285,6 +285,35 @@
     }
 
     window.addEventListener('DOMContentLoaded', fetchTotalAccess);
+  </script>
+
+//1A
+<script>
+    function fetchClass1AStatus() {
+      const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
+
+      fetch(url, { mode: 'cors' })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('ネットワークエラー');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // 💡 AWSから届いた新しい混雑度の文字（空いています、やや混雑など）を画面に出す
+          if (data.status) {
+            document.getElementById('1A-status').innerText = data.status;
+          }
+        })
+        .catch(error => {
+          console.error("1Aのデータ読み込みエラー:", error);
+          document.getElementById('1A-status').innerText = "エラー";
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchClass1AStatus();
+    });
   </script>
   
 </body>
