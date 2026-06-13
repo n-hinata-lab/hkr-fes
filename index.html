@@ -151,6 +151,48 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
+    //1A
+<style>
+  /* カード全体のデザイン（枠を追加しました！） */
+  .card { 
+    background: white; 
+    border-radius: 12px; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    display: inline-block; 
+    min-width: 260px; 
+    border: 1px solid #e1e4e6; /* 👈 これで綺麗な枠線がつきます */
+    text-align: center; 
+  }
+  
+  h3 { 
+    margin: 0 0 10px 0; 
+    color: #6c757d; 
+    font-size: 14px; 
+    letter-spacing: 1px; 
+  }
+  
+  /* 混雑状況のバッジ（文字を少し小さくしました！） */
+  .status-badge { 
+    display: inline-block; 
+    padding: 10px 20px;       /* 上下の余白も少しスリムに */
+    border-radius: 30px; 
+    font-size: 16px;          /* 👈 22pxから16pxに小さくして上品にしました */
+    font-weight: bold; 
+    color: white; 
+    margin-bottom: 10px; 
+    min-width: 140px; 
+    transition: all 0.3s ease; 
+  }
+  
+  .update-time { 
+    font-size: 11px; 
+    color: #adb5bd; 
+    margin: 0; 
+  }
+</style>
+
   </style>
 </head>
 <body>
@@ -183,10 +225,12 @@
       
       <div class="grid-container">
         
-        <div class="class-card">
-         <h2>1年A組</h2>
-         <h4>メリーゴーランド</h4>
-         <span id="1A-status" class="status-badge">読み込み中...</span></p>
+        <div class="card">
+          <h3>現在の1A混雑状況</h3>
+          <h3>（出し物の名前）</h3>
+
+          <div id="status" class="status-badge">読込中...</div>
+          <p id="time" class="update-time">--:--:--</p>
         </div>
 
         <div class="class-card">
@@ -289,32 +333,47 @@
 
 //1A
 <script>
-    function fetchClass1AStatus() {
-      const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
+  function fetchStatus() {
+    const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
+    
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const badge = document.getElementById('status');
+        badge.innerText = data.status; // 文字を書き換え
+        
+        // 文字に合わせて色を変える設定
+        if (data.status === "空いています") {
+          badge.style.backgroundColor = "#28a745"; // 緑
+          badge.style.color = "white";
+        } else if (data.status === "やや混雑") {
+          badge.style.backgroundColor = "#ffc107"; // 黄
+          badge.style.color = "#333";
+        } else if (data.status === "混雑") {
+          badge.style.backgroundColor = "#fd7e14"; // オレンジ
+          badge.style.color = "white";
+        } else if (data.status === "とても混雑") {
+          badge.style.backgroundColor = "#dc3545"; // 赤
+          badge.style.color = "white";
+        }
+        
+        // 時計の更新
+        const now = new Date();
+        document.getElementById('time').innerText = "最終更新: " + now.toLocaleTimeString();
+      })
+      .catch(error => {
+        document.getElementById('status').innerText = "エラー";
+        document.getElementById('status').style.backgroundColor = "#dc3545";
+        console.error("Error:", error);
+      });
+  }
 
-      fetch(url, { mode: 'cors' })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('ネットワークエラー');
-          }
-          return response.json();
-        })
-        .then(data => {
-          // 💡 AWSから届いた新しい混雑度の文字（空いています、やや混雑など）を画面に出す
-          if (data.status) {
-            document.getElementById('1A-status').innerText = data.status;
-          }
-        })
-        .catch(error => {
-          console.error("1Aのデータ読み込みエラー:", error);
-          document.getElementById('1A-status').innerText = "エラー";
-        });
-    }
+  // 画面が開いた時と、1分ごとに実行
+  window.addEventListener('DOMContentLoaded', () => {
+    fetchStatus();
+    setInterval(fetchStatus, 60000); 
+  });
+</script>
 
-    window.addEventListener('DOMContentLoaded', () => {
-      fetchClass1AStatus();
-    });
-  </script>
-  
 </body>
 </html>
