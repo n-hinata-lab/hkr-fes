@@ -129,6 +129,45 @@
       margin-bottom: 12px;
     }
 
+
+  /* カード全体のデザイン（枠を追加しました！） */
+  .card { 
+    background: rgb(235, 235, 235); 
+    border-radius: 20px; 
+    padding: 15px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    display: inline-block; 
+    min-width: 150px; 
+    border: 1px solid #969696; /* 👈 2pxの太さのきれいな黒色（#000000）のふち線です */
+    text-align: center; 
+  }
+  
+  h3 { 
+    margin: 0 0 10px 0; 
+    color: #000000; 
+    font-size: 14px; 
+    letter-spacing: 1px; 
+  }
+
+    /* 混雑状況のバッジ（文字を少し小さくしました！） */
+  .status-badge { 
+    display: inline-block; 
+    padding: 10px 20px;       /* 上下の余白も少しスリムに */
+    border-radius: 30px; 
+    font-size: 16px;          /* 👈 22pxから16pxに小さくして上品にしました */
+    font-weight: bold; 
+    color: white; 
+    margin-bottom: 10px; 
+    min-width: 140px; 
+    transition: all 0.3s ease; 
+  }
+  
+  .update-time { 
+    font-size: 11px; 
+    color: #adb5bd; 
+    margin: 0; 
+  }
+
     /* 混雑状況のバッジ（初期状態：緑の「空いています」） */
     .status-badge {
       display: inline-block;
@@ -152,45 +191,10 @@
       }
     }
 
-    //1A
-<style>
-  /* カード全体のデザイン（枠を追加しました！） */
-  .card { 
-    background: white; 
-    border-radius: 12px; 
-    padding: 20px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-    display: inline-block; 
-    min-width: 260px; 
-    border: 1px solid #e1e4e6; /* 👈 これで綺麗な枠線がつきます */
-    text-align: center; 
-  }
+
+
   
-  h3 { 
-    margin: 0 0 10px 0; 
-    color: #6c757d; 
-    font-size: 14px; 
-    letter-spacing: 1px; 
-  }
-  
-  /* 混雑状況のバッジ（文字を少し小さくしました！） */
-  .status-badge { 
-    display: inline-block; 
-    padding: 10px 20px;       /* 上下の余白も少しスリムに */
-    border-radius: 30px; 
-    font-size: 16px;          /* 👈 22pxから16pxに小さくして上品にしました */
-    font-weight: bold; 
-    color: white; 
-    margin-bottom: 10px; 
-    min-width: 140px; 
-    transition: all 0.3s ease; 
-  }
-  
-  .update-time { 
-    font-size: 11px; 
-    color: #adb5bd; 
-    margin: 0; 
-  }
+
 </style>
 
   </style>
