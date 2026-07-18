@@ -244,14 +244,15 @@
           <h3>1A</h3>
           <h3>（出し物の名前）</h3>
 
-          <div id="status" class="status-badge">読込中...</div>
+          <div id="status1A" class="status-badge">読込中...</div>
           <p id="time" class="update-time">--:--:--</p>
         </div>
 
         <div class="class-card">
           <div class="class-name">1B</div>
           <div class="exhibit-name">ボウリング</div>
-          <div id="status" class="status-badge">読込中...</div>
+
+          <div id="status1B" class="status-badge">読込中...</div>
           <p id="time" class="update-time">--:--:--</p>
         </div>
 
@@ -347,97 +348,87 @@
     window.addEventListener('DOMContentLoaded', fetchTotalAccess);
   </script>
 
+  <script>
+// 🔴 1Aの混雑状況を取ってくる処理
+    function fetchStatus1A() {
+      const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const badge = document.getElementById('status1A');
+          badge.innerText = data.status;
+          
+          if (data.status === "空いています") {
+            badge.style.backgroundColor = "#28a745"; // 緑
+            badge.style.color = "white";
+          } else if (data.status === "やや混雑") {
+            badge.style.backgroundColor = "#ffc107"; // 黄
+            badge.style.color = "#333";
+          } else if (data.status === "混雑") {
+            badge.style.backgroundColor = "#fd7e14"; // オレンジ
+            badge.style.color = "white";
+          } else if (data.status === "とても混雑") {
+            badge.style.backgroundColor = "#dc3545"; // 赤
+            badge.style.color = "white";
+          }
+          
+          const now = new Date();
+          document.getElementById('time1A').innerText = "最終更新: " + now.toLocaleTimeString();
+        })
+        .catch(error => {
+          document.getElementById('status1A').innerText = "エラー";
+          document.getElementById('status1A').style.backgroundColor = "#dc3545";
+          console.error("1A Error:", error);
+        });
+    }
 
-<script>
- // 1Aのコード
+    // 🔵 1Bの混雑状況を取ってくる処理
+    function fetchStatus1B() {
+      const url = "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const badge = document.getElementById('status1B');
+          badge.innerText = data.status;
+          
+          if (data.status === "空いています") {
+            badge.style.backgroundColor = "#28a745"; // 緑
+            badge.style.color = "white";
+          } else if (data.status === "やや混雑") {
+            badge.style.backgroundColor = "#ffc107"; // 黄
+            badge.style.color = "#333";
+          } else if (data.status === "混雑") {
+            badge.style.backgroundColor = "#fd7e14"; // オレンジ
+            badge.style.color = "white";
+          } else if (data.status === "とても混雑") {
+            badge.style.backgroundColor = "#dc3545"; // 赤
+            badge.style.color = "white";
+          }
+          
+          const now = new Date();
+          document.getElementById('time1B').innerText = "最終更新: " + now.toLocaleTimeString();
+        })
+        .catch(error => {
+          document.getElementById('status1B').innerText = "エラー";
+          document.getElementById('status1B').style.backgroundColor = "#dc3545";
+          console.error("1B Error:", error);
+        });
+    }
 
-  function fetchStatus() {
-    const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
-    
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const badge = document.getElementById('status');
-        badge.innerText = data.status; // 文字を書き換え
-        
-        // 文字に合わせて色を変える設定
-        if (data.status === "空いています") {
-          badge.style.backgroundColor = "#28a745"; // 緑
-          badge.style.color = "white";
-        } else if (data.status === "やや混雑") {
-          badge.style.backgroundColor = "#ffc107"; // 黄
-          badge.style.color = "#333";
-        } else if (data.status === "混雑") {
-          badge.style.backgroundColor = "#fd7e14"; // オレンジ
-          badge.style.color = "white";
-        } else if (data.status === "とても混雑") {
-          badge.style.backgroundColor = "#dc3545"; // 赤
-          badge.style.color = "white";
-        }
-        
-        // 時計の更新
-        const now = new Date();
-        document.getElementById('time').innerText = "最終更新: " + now.toLocaleTimeString();
-      })
-      .catch(error => {
-        document.getElementById('status').innerText = "エラー";
-        document.getElementById('status').style.backgroundColor = "#dc3545";
-        console.error("Error:", error);
-      });
-  }
-
-  // 画面が開いた時と、1分ごとに実行
-  window.addEventListener('DOMContentLoaded', () => {
-    fetchStatus();
-    setInterval(fetchStatus, 60000); 
-  });
-
-</script>
-
-<script>
- // 1Bのコード
-
-  function fetchStatus() {
-    const url = "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/";
-    
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const badge = document.getElementById('status');
-        badge.innerText = data.status; // 文字を書き換え
-        
-        // 文字に合わせて色を変える設定
-        if (data.status === "空いています") {
-          badge.style.backgroundColor = "#28a745"; // 緑
-          badge.style.color = "white";
-        } else if (data.status === "やや混雑") {
-          badge.style.backgroundColor = "#ffc107"; // 黄
-          badge.style.color = "#333";
-        } else if (data.status === "混雑") {
-          badge.style.backgroundColor = "#fd7e14"; // オレンジ
-          badge.style.color = "white";
-        } else if (data.status === "とても混雑") {
-          badge.style.backgroundColor = "#dc3545"; // 赤
-          badge.style.color = "white";
-        }
-        
-        // 時計の更新
-        const now = new Date();
-        document.getElementById('time').innerText = "最終更新: " + now.toLocaleTimeString();
-      })
-      .catch(error => {
-        document.getElementById('status').innerText = "エラー";
-        document.getElementById('status').style.backgroundColor = "#dc3545";
-        console.error("Error:", error);
-      });
-  }
-
-  // 画面が開いた時と、1分ごとに実行
-  window.addEventListener('DOMContentLoaded', () => {
-    fetchStatus();
-    setInterval(fetchStatus, 60000); 
-  });
-</script>
+    // 🚀 画面が開いた瞬間に、すべての通信をスタートさせる
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchTotalAccess(); // カウンター起動
+      fetchStatus1A();    // 1A起動
+      fetchStatus1B();    // 1B起動
+      
+      // 1分ごとに、すべてを自動で最新情報に更新する
+      setInterval(() => {
+        fetchTotalAccess();
+        fetchStatus1A();
+        fetchStatus1B();
+      }, 60000); 
+    });
+  </script>
 
 
 </body>
