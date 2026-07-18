@@ -251,7 +251,8 @@
         <div class="class-card">
           <div class="class-name">1B</div>
           <div class="exhibit-name">ボウリング</div>
-          <div class="status-badge" id="status-1B">空いています</div>
+          <div id="status" class="status-badge">読込中...</div>
+          <p id="time" class="update-time">--:--:--</p>
         </div>
 
         <div class="class-card">
@@ -346,8 +347,10 @@
     window.addEventListener('DOMContentLoaded', fetchTotalAccess);
   </script>
 
-//1A
+
 <script>
+ // 1Aのコード
+
   function fetchStatus() {
     const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
     
@@ -388,7 +391,54 @@
     fetchStatus();
     setInterval(fetchStatus, 60000); 
   });
+
 </script>
+
+<script>
+ // 1Bのコード
+
+  function fetchStatus() {
+    const url = "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/";
+    
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const badge = document.getElementById('status');
+        badge.innerText = data.status; // 文字を書き換え
+        
+        // 文字に合わせて色を変える設定
+        if (data.status === "空いています") {
+          badge.style.backgroundColor = "#28a745"; // 緑
+          badge.style.color = "white";
+        } else if (data.status === "やや混雑") {
+          badge.style.backgroundColor = "#ffc107"; // 黄
+          badge.style.color = "#333";
+        } else if (data.status === "混雑") {
+          badge.style.backgroundColor = "#fd7e14"; // オレンジ
+          badge.style.color = "white";
+        } else if (data.status === "とても混雑") {
+          badge.style.backgroundColor = "#dc3545"; // 赤
+          badge.style.color = "white";
+        }
+        
+        // 時計の更新
+        const now = new Date();
+        document.getElementById('time').innerText = "最終更新: " + now.toLocaleTimeString();
+      })
+      .catch(error => {
+        document.getElementById('status').innerText = "エラー";
+        document.getElementById('status').style.backgroundColor = "#dc3545";
+        console.error("Error:", error);
+      });
+  }
+
+  // 画面が開いた時と、1分ごとに実行
+  window.addEventListener('DOMContentLoaded', () => {
+    fetchStatus();
+    setInterval(fetchStatus, 60000); 
+  });
+</script>
+
 
 </body>
 </html>
