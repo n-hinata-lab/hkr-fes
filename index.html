@@ -407,16 +407,16 @@
         });
     }
 
-    // 🚀 画面が開いた瞬間に、すべての通信をスタートさせる
+// 🚀 画面が開いた瞬間に、すべての通信をスタートさせる
     window.addEventListener('DOMContentLoaded', () => {
-      fetchTotalAccess(); // カウンター起動
+      fetchTotalAccess(); // ⭕️ ページを開いた時の最初の1回だけカウントする
       fetchStatus1A();    // 1A起動
       fetchStatus1B();    // 1B起動
       
-      // 1分ごとに、すべてを自動で最新情報に更新する
+      // 1分ごとに自動で最新情報に更新する（混雑状況だけ！）
       setInterval(() => {
-        fetchStatus1A();
-        fetchStatus1B();
+        fetchStatus1A();    // 1Aだけ更新
+        fetchStatus1B();    // 1Bだけ更新
       }, 60000); 
     });
   </script>
