@@ -258,8 +258,9 @@
         <div class="class-card">
           <div class="class-name">1D</div>
           <div class="exhibit-name">ストラックアウト</div>
-          <div class="status-badge" id="status-1D">空いています</div>
-        </div>
+          <div id="status1D" class="status-badge">読込中...</div>
+          <p id="time1D" class="update-time">--:--:--</p>
+          </div>
 
         <!-- 2A -->
         <div class="class-card">
@@ -437,7 +438,40 @@
         .catch(error => {
           document.getElementById('status1C').innerText = "エラー";
           document.getElementById('status1C').style.backgroundColor = "#dc3545";
-          console.error("1B Error:", error);
+          console.error("1C Error:", error);
+        });
+    }
+
+         //  1Dの混雑状況を取ってくる処理
+    function fetchStatus1D() {
+      const url = "https://ab52z1xs76.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const badge = document.getElementById('status1D');
+          badge.innerText = data.status;
+          
+          if (data.status === "空いています") {
+            badge.style.backgroundColor = "#28a745"; // 緑
+            badge.style.color = "white";
+          } else if (data.status === "やや混雑") {
+            badge.style.backgroundColor = "#ffc107"; // 黄
+            badge.style.color = "#333";
+          } else if (data.status === "混雑") {
+            badge.style.backgroundColor = "#fd7e14"; // オレンジ
+            badge.style.color = "white";
+          } else if (data.status === "とても混雑") {
+            badge.style.backgroundColor = "#dc3545"; // 赤
+            badge.style.color = "white";
+          }
+          
+          const now = new Date();
+          document.getElementById('time1D').innerText = "最終更新: " + now.toLocaleTimeString();
+        })
+        .catch(error => {
+          document.getElementById('status1D').innerText = "エラー";
+          document.getElementById('status1D').style.backgroundColor = "#dc3545";
+          console.error("1D Error:", error);
         });
     }
 
@@ -447,12 +481,14 @@
       fetchStatus1A();    // 1A起動
       fetchStatus1B();    // 1B起動
       fetchStatus1C();    // 1C起動
+      fetchStatus1D();    // 1D起動
       
       // 1分ごとに自動で最新情報に更新する（混雑状況だけ！）
       setInterval(() => {
         fetchStatus1A();    // 1Aだけ更新
         fetchStatus1B();    // 1Bだけ更新
         fetchStatus1C();    // 1Cだけ更新
+        fetchStatus1D();    // 1Dだけ更新
 
       }, 60000); 
     });
