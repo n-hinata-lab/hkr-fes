@@ -329,7 +329,8 @@
         <div class="class-card">
           <div class="class-name">2D</div>
           <div class="exhibit-name">わたあめ</div>
-          <div class="status-badge" id="status-3D-shavedice">空いています</div>
+          <div id="status2D" class="status-badge">読込中...</div>
+          <p id="time2D" class="update-time">--:--:--</p>
         </div>
 
         <!-- 3A -->
@@ -668,6 +669,39 @@ function fetchTotalAccess() {
         });
     }    
 
+         //  2Dの混雑状況を取ってくる処理
+    function fetchStatus2D() {
+      const url = "https://cz0vnh5o16.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const badge = document.getElementById('status2D');
+          badge.innerText = data.status;
+          
+          if (data.status === "空いています") {
+            badge.style.backgroundColor = "#28a745"; // 緑
+            badge.style.color = "white";
+          } else if (data.status === "やや混雑") {
+            badge.style.backgroundColor = "#ffc107"; // 黄
+            badge.style.color = "#333";
+          } else if (data.status === "混雑") {
+            badge.style.backgroundColor = "#fd7e14"; // オレンジ
+            badge.style.color = "white";
+          } else if (data.status === "とても混雑") {
+            badge.style.backgroundColor = "#dc3545"; // 赤
+            badge.style.color = "white";
+          }
+          
+          const now = new Date();
+          document.getElementById('time2D').innerText = "最終更新: " + now.toLocaleTimeString();
+        })
+        .catch(error => {
+          document.getElementById('status2D').innerText = "エラー";
+          document.getElementById('status2D').style.backgroundColor = "#dc3545";
+          console.error("2D Error:", error);
+        });
+    }    
+
 // 🚀 画面が開いた瞬間に、すべての通信をスタートさせる
     window.addEventListener('DOMContentLoaded', () => {
       fetchTotalAccess(); // ⭕️ ページを開いた時の最初の1回だけカウントする
@@ -678,6 +712,7 @@ function fetchTotalAccess() {
       fetchStatus2A();    // 2A起動
       fetchStatus2B();    // 2B起動
       fetchStatus2C();    // 2C起動
+      fetchStatus2D();    // 2D起動
 
       
       // 1分ごとに自動で最新情報に更新する（混雑状況だけ！）
@@ -689,6 +724,7 @@ function fetchTotalAccess() {
         fetchStatus2A();    // 2Aだけ更新
         fetchStatus2B();    // 2Bだけ更新
         fetchStatus2C();    // 2Cだけ更新
+        fetchStatus2D();    // 2Dだけ更新
 
 
       }, 60000); 
