@@ -1,15 +1,14 @@
-</html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWREQHGGGH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EWREQHGGGH');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWREQHGGGH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EWREQHGGGH');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +19,13 @@
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-      background-color: #dcdcdc; /* 画像の薄いグレーの背景 */
+      background-color: #dcdcdc;
       color: #000000;
     }
 
     /* 上部ヘッダー */
     header {
-      background-color: #4682b4; /* スティールブルー */
+      background-color: #4682b4;
       color: #ffffff;
       padding: 15px 25px;
       font-size: 22px;
@@ -34,7 +33,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    /* メインレイアウト（左メニューと右コンテンツの分割） */
+    /* メインレイアウト */
     .main-container {
       display: flex;
       padding: 30px;
@@ -60,14 +59,6 @@
       color: #111;
     }
 
-    /* 累計アクセス数の数字 */
-    .access-counter {
-      font-size: 48px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin: 10px 0;
-    }
-
     .sidebar-text {
       font-size: 13px;
       line-height: 1.4;
@@ -79,7 +70,7 @@
     .link-button {
       display: block;
       width: 100%;
-      background-color: #468aa6; /* 画像のボタン色 */
+      background-color: #468aa6;
       color: #ffffff;
       text-align: center;
       padding: 12px 0;
@@ -108,7 +99,7 @@
       margin-bottom: 25px;
     }
 
-    /* クラスカードが並ぶグリッド（横に4つ並ぶ設定） */
+    /* クラスカードが並ぶグリッド */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -117,7 +108,7 @@
 
     /* 各クラスのカード */
     .class-card {
-      background-color: #e6e6e6; /* 薄いグレーのカード */
+      background-color: #e6e6e6;
       border: 1px solid #999999;
       border-radius: 20px;
       padding: 15px;
@@ -137,56 +128,25 @@
       margin-bottom: 12px;
     }
 
-
-  /* カード全体のデザイン（枠を追加しました！） */
-  .card { 
-    background: rgb(235, 235, 235); 
-    border-radius: 20px; 
-    padding: 15px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-    display: inline-block; 
-    min-width: 150px; 
-    border: 1px solid #969696; /* 👈 2pxの太さのきれいな黒色（#000000）のふち線です */
-    text-align: center; 
-  }
+    /* 混雑状況のバッジ（重複を統合して綺麗に整理しました！） */
+    .status-badge { 
+      display: inline-block; 
+      padding: 8px 20px;
+      border-radius: 30px; 
+      font-size: 16px;
+      font-weight: bold; 
+      color: white; 
+      margin-bottom: 10px; 
+      min-width: 120px; 
+      background-color: #828582; /* 初期状態のグレー */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+      transition: all 0.3s ease; 
+    }
   
-  h3 { 
-    margin: 0 0 10px 0; 
-    color: #000000; 
-    font-size: 14px; 
-    letter-spacing: 1px; 
-  }
-
-    /* 混雑状況のバッジ（文字を少し小さくしました！） */
-  .status-badge { 
-    display: inline-block; 
-    padding: 10px 20px;       /* 上下の余白も少しスリムに */
-    border-radius: 30px; 
-    font-size: 16px;          /* 👈 22pxから16pxに小さくして上品にしました */
-    font-weight: bold; 
-    color: white; 
-    margin-bottom: 10px; 
-    min-width: 140px; 
-    transition: all 0.3s ease; 
-  }
-  
-  .update-time { 
-    font-size: 11px; 
-    color: #adb5bd; 
-    margin: 0; 
-  }
-
-    /* 混雑状況のバッジ（初期状態：緑の「空いています」） */
-    .status-badge {
-      display: inline-block;
-      background-color: #828582; /* ライムグリーン */
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: bold;
-      padding: 6px 20px;
-      border-radius: 15px;
-      min-width: 100px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    .update-time { 
+      font-size: 11px; 
+      color: #7f8c8d; 
+      margin: 0; 
     }
 
     /* スマホなどの画面が狭いときの対策 */
@@ -199,43 +159,42 @@
       }
     }
 
-/* YouTube風カウンターのスタイル（縦並び・崩れ防止版） */
-.flip-counter {
-  display: flex;          /* 数字の桁だけを横に並べる */
-  justify-content: flex-start; /* 左寄せ（中央にしたい場合は center に変更してください） */
-  overflow: hidden;       /* はみ出た数字の列を隠す */
-  height: 48px;           /* 元の48pxの大きさに合わせる */
-  line-height: 48px;
-  margin: 10px 0;
-  font-family: 'Arial', Courier, monospace; /* 桁ブレ防止 */
-  font-size: 48px;        /* 元の大きい数字のサイズ */
-  font-weight: bold;
-  letter-spacing: 2px;
-}
+    /* YouTube風カウンターのスタイル */
+    .flip-counter {
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      height: 48px;
+      line-height: 48px;
+      margin: 10px 0;
+      font-family: 'Arial', Courier, monospace;
+      font-size: 48px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
 
-.digit-container {
-  position: relative;
-  width: 28px;            /* 文字サイズ48pxに合わせた横幅 */
-  height: 100%;
-  text-align: center;
-}
+    .digit-container {
+      position: relative;
+      width: 28px;
+      height: 100%;
+      text-align: center;
+    }
 
-.digit-strip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1); /* YouTubeの吸着の動き */
-}
+    .digit-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-.digit-strip span {
-  display: block;
-  height: 48px;           /* 1文字分の高さ */
-}
-</style>
-
+    .digit-strip span {
+      display: block;
+      height: 48px;
+    }
+  </style>
 </head>
 <body>
 
@@ -244,14 +203,13 @@
   <div class="main-container">
     
     <div class="sidebar">
-<!-- 📊 累計アクセス数表示エリア（見やすく縦並びに修正） -->
-<div class="sidebar-section">
-  <div class="sidebar-title">現在の累計アクセス数</div>
-  <div id="total-preview" class="flip-counter">
-    <!-- ここにYouTube風の動く数字が入ります -->
-    <div class="digit-container"><div class="digit-strip">0</div></div>
-  </div>
-</div>
+      <!-- 📊 累計アクセス数表示エリア -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">現在の累計アクセス数</div>
+        <div id="total-preview" class="flip-counter">
+          <!-- JSで自動生成されるため初期状態は空欄にします -->
+        </div>
+      </div>
 
       <div class="sidebar-section" style="margin-top: 50px;">
         <div class="sidebar-text">クラスで作られた<br>webサイトはこちらから見れます。<br>※作られているクラスのみ見ることができます</div>
@@ -285,7 +243,7 @@
           <p id="time1B" class="update-time">--:--:--</p>
         </div>
 
-        <!-- 1C (量産するときはここを1Bみたいに書き換えていきます) -->
+        <!-- 1C -->
         <div class="class-card">
           <div class="class-name">1C</div>
           <div class="exhibit-name">バスケットボール</div>
@@ -299,7 +257,7 @@
           <div class="exhibit-name">ストラックアウト</div>
           <div id="status1D" class="status-badge">読込中...</div>
           <p id="time1D" class="update-time">--:--:--</p>
-          </div>
+        </div>
 
         <!-- 2A -->
         <div class="class-card">
@@ -369,121 +327,78 @@
     </div>
   </div>
 
-  <!-- ⚙️ プログラム部分（すべての処理を1つに綺麗にまとめました！） -->
+  <!-- ⚙️ プログラム部分（超スッキリ共通化しました！） -->
   <script>
-      // 🎞️ 数字の縦長テープを生成して、下から上へシャッとスライドさせる関数
-      
+    // 🎞️ YouTube風カウンターの数字アニメーション処理
     function updateYouTubeCounter(targetNumber) {
       const counterContainer = document.getElementById('total-preview');
       const targetStr = String(targetNumber);
-  
-      // 現在表示されている桁のコンテナ数を取得
       let currentContainers = counterContainer.querySelectorAll('.digit-container');
   
-     // 桁数が変わった、または初回の場合は構造をリセットして作り直す
-     if (currentContainers.length !== targetStr.length) {
-       counterContainer.innerHTML = '';
-       for (let i = 0; i < targetStr.length; i++) {
-         const container = document.createElement('div');
-         container.className = 'digit-container';
+      // 初回、または桁数が変わった場合は構造を一度リセットして作り直す
+      if (currentContainers.length !== targetStr.length) {
+        counterContainer.innerHTML = '';
+        for (let i = 0; i < targetStr.length; i++) {
+          const container = document.createElement('div');
+          container.className = 'digit-container';
       
           const strip = document.createElement('div');
           strip.className = 'digit-strip';
       
-         // 0から9までの数字を縦一列に並べたテープを作る
-         for (let j = 0; j <= 9; j++) {
-           const span = document.createElement('span');
-           span.innerText = j;
-           strip.appendChild(span);
-         }
+          // 0から9までの数字テープを作成
+          for (let j = 0; j <= 9; j++) {
+            const span = document.createElement('span');
+            span.innerText = j;
+            strip.appendChild(span);
+          }
       
-         container.appendChild(strip);
-         counterContainer.appendChild(container);
-       }
-       // 新しく作った要素を再取得
-       currentContainers = counterContainer.querySelectorAll('.digit-container');
-     }
-
-     // 各桁のテープを、目標の数字の位置まで下から上へ引っ張り上げる
-     // (例: 「5」なら、5文字分(50%)だけ上にマイナス移動させる)
-// 各桁のテープを目標の数字の位置まで上に引っ張り上げる
-  setTimeout(() => {
-    currentContainers.forEach((container, index) => {
-      const strip = container.querySelector('.digit-strip');
-      const digit = parseInt(targetStr[index], 10);
-      
-      // 💡 ここを 48 に変更します！（1文字の高さ48px分だけずらす）
-      const moveY = -(digit * 48); 
-      strip.style.transform = `translateY(${moveY}px)`; // 👈 ここも rem から px に変わります
-    });
-  }, 50);
-    }
-
-// 🌐 データを取ってくる関数（中身をスライド用に変更）
-function fetchTotalAccess() {
-  const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
-  fetch(url, { mode: 'cors' })
-    .then(response => {
-      if (!response.ok) throw new Error('ネットワークエラー');
-      return response.json();
-    })
-    .then(data => {
-      if (data.total_access) {
-        // 💡 新しいスライド式カウンターに数値を渡す！
-        updateYouTubeCounter(data.total_access);
+          container.appendChild(strip);
+          counterContainer.appendChild(container);
+        }
+        currentContainers = counterContainer.querySelectorAll('.digit-container');
       }
-    })
-    .catch(error => {
-      console.error("カウンター読み込みエラー:", error);
-      // エラー時は通常のテキストで表示
-      document.getElementById('total-preview').innerText = "---";
-    });
-}
 
+      // 各桁のテープを目標の数字の位置まで上にスライド（1文字48px）
+      setTimeout(() => {
+        currentContainers.forEach((container, index) => {
+          const strip = container.querySelector('.digit-strip');
+          const digit = parseInt(targetStr[index], 10);
+          const moveY = -(digit * 48); 
+          strip.style.transform = `translateY(${moveY}px)`;
+        });
+      }, 50);
+    }
 
-
-    // 🔴 1Aの混雑状況を取ってくる処理
-    function fetchStatus1A() {
-      const url = "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
+    // 🌐 全体の累計アクセス数を取得
+    function fetchTotalAccess() {
+      const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url, { mode: 'cors' })
+        .then(response => {
+          if (!response.ok) throw new Error('ネットワークエラー');
+          return response.json();
+        })
         .then(data => {
-          const badge = document.getElementById('status1A');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
+          if (data.total_access) {
+            updateYouTubeCounter(data.total_access);
           }
-          
-          const now = new Date();
-          document.getElementById('time1A').innerText = "最終更新: " + now.toLocaleTimeString();
         })
         .catch(error => {
-          document.getElementById('status1A').innerText = "エラー";
-          document.getElementById('status1A').style.backgroundColor = "#dc3545";
-          console.error("1A Error:", error);
+          console.error("カウンター読み込みエラー:", error);
+          document.getElementById('total-preview').innerText = "---";
         });
     }
 
-    // 🔵 1Bの混雑状況を取ってくる処理
-    function fetchStatus1B() {
-      const url = "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/";
+    // 🔴【新機能】すべてのクラスの混雑状況を1つで処理する共通関数
+    function fetchClassStatus(className, url) {
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          const badge = document.getElementById('status1B');
+          const badge = document.getElementById(`status${className}`);
+          const timeElement = document.getElementById(`time${className}`);
+          
           badge.innerText = data.status;
           
+          // ステータスに応じた色変更ルール
           if (data.status === "空いています") {
             badge.style.backgroundColor = "#28a745"; // 緑
             badge.style.color = "white";
@@ -499,380 +414,48 @@ function fetchTotalAccess() {
           }
           
           const now = new Date();
-          document.getElementById('time1B').innerText = "最終更新: " + now.toLocaleTimeString();
+          timeElement.innerText = "最終更新: " + now.toLocaleTimeString();
         })
         .catch(error => {
-          document.getElementById('status1B').innerText = "エラー";
-          document.getElementById('status1B').style.backgroundColor = "#dc3545";
-          console.error("1B Error:", error);
+          const badge = document.getElementById(`status${className}`);
+          badge.innerText = "エラー";
+          badge.style.backgroundColor = "#dc3545";
+          badge.style.color = "white";
+          console.error(`${className} Error:`, error);
         });
     }
 
-     //  1Cの混雑状況を取ってくる処理
-    function fetchStatus1C() {
-      const url = "https://auf0gmxo11.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status1C');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time1C').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status1C').innerText = "エラー";
-          document.getElementById('status1C').style.backgroundColor = "#dc3545";
-          console.error("1C Error:", error);
-        });
+    // 各クラスの名前とAPIのURLの対応表（データマップ）
+    const classApiMap = {
+      "1A": "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/",
+      "1B": "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/",
+      "1C": "https://auf0gmxo11.execute-api.ap-southeast-2.amazonaws.com/",
+      "1D": "https://ab52z1xs76.execute-api.ap-southeast-2.amazonaws.com/",
+      "2A": "https://9qmsx7x665.execute-api.ap-southeast-2.amazonaws.com/",
+      "2B": "https://9em8vixtjf.execute-api.ap-southeast-2.amazonaws.com/",
+      "2C": "https://qnuphfbbn0.execute-api.ap-southeast-2.amazonaws.com/",
+      "2D": "https://cz0vnh5o16.execute-api.ap-southeast-2.amazonaws.com/",
+      "3A": "https://9dr47jidx0.execute-api.ap-southeast-2.amazonaws.com/",
+      "3B": "https://mmu1ftlc3i.execute-api.ap-southeast-2.amazonaws.com/",
+      "3C": "https://1cacs3eo4d.execute-api.ap-southeast-2.amazonaws.com/",
+      "3D": "https://wb7m7c8p84.execute-api.ap-southeast-2.amazonaws.com/"
+    };
+
+    // すべてのクラスを一括更新する関数
+    function refreshAllClasses() {
+      Object.keys(classApiMap).forEach(className => {
+        fetchClassStatus(className, classApiMap[className]);
+      });
     }
 
-         //  1Dの混雑状況を取ってくる処理
-    function fetchStatus1D() {
-      const url = "https://ab52z1xs76.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status1D');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time1D').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status1D').innerText = "エラー";
-          document.getElementById('status1D').style.backgroundColor = "#dc3545";
-          console.error("1D Error:", error);
-        });
-    }
-
-             //  2Aの混雑状況を取ってくる処理
-    function fetchStatus2A() {
-      const url = "https://9qmsx7x665.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status2A');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time2A').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status2A').innerText = "エラー";
-          document.getElementById('status2A').style.backgroundColor = "#dc3545";
-          console.error("2A Error:", error);
-        });
-    }
-
-     //  2Bの混雑状況を取ってくる処理
-    function fetchStatus2B() {
-      const url = "https://9em8vixtjf.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status2B');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time2B').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status2B').innerText = "エラー";
-          document.getElementById('status2B').style.backgroundColor = "#dc3545";
-          console.error("2B Error:", error);
-        });
-    }
-
-     //  2Cの混雑状況を取ってくる処理
-    function fetchStatus2C() {
-      const url = "https://qnuphfbbn0.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status2C');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time2C').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status2C').innerText = "エラー";
-          document.getElementById('status2C').style.backgroundColor = "#dc3545";
-          console.error("2C Error:", error);
-        });
-    }    
-
-         //  2Dの混雑状況を取ってくる処理
-    function fetchStatus2D() {
-      const url = "https://cz0vnh5o16.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status2D');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time2D').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status2D').innerText = "エラー";
-          document.getElementById('status2D').style.backgroundColor = "#dc3545";
-          console.error("2D Error:", error);
-        });
-    }    
-
-
-         //  3Aの混雑状況を取ってくる処理
-    function fetchStatus3A() {
-      const url = "https://9dr47jidx0.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status3A');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time3A').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status3A').innerText = "エラー";
-          document.getElementById('status3A').style.backgroundColor = "#dc3545";
-          console.error("3A Error:", error);
-        });
-    }    
-
-             //  3Bの混雑状況を取ってくる処理
-    function fetchStatus3B() {
-      const url = "https://mmu1ftlc3i.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status3B');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time3B').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status3B').innerText = "エラー";
-          document.getElementById('status3B').style.backgroundColor = "#dc3545";
-          console.error("3B Error:", error);
-        });
-    }    
-
-    //  3Cの混雑状況を取ってくる処理
-    function fetchStatus3C() {
-      const url = "https://1cacs3eo4d.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status3C');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time3C').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status3C').innerText = "エラー";
-          document.getElementById('status3C').style.backgroundColor = "#dc3545";
-          console.error("3C Error:", error);
-        });
-    }    
-
-        //  3Dの混雑状況を取ってくる処理
-    function fetchStatus3D() {
-      const url = "https://wb7m7c8p84.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const badge = document.getElementById('status3D');
-          badge.innerText = data.status;
-          
-          if (data.status === "空いています") {
-            badge.style.backgroundColor = "#28a745"; // 緑
-            badge.style.color = "white";
-          } else if (data.status === "やや混雑") {
-            badge.style.backgroundColor = "#ffc107"; // 黄
-            badge.style.color = "#333";
-          } else if (data.status === "混雑") {
-            badge.style.backgroundColor = "#fd7e14"; // オレンジ
-            badge.style.color = "white";
-          } else if (data.status === "とても混雑") {
-            badge.style.backgroundColor = "#dc3545"; // 赤
-            badge.style.color = "white";
-          }
-          
-          const now = new Date();
-          document.getElementById('time3D').innerText = "最終更新: " + now.toLocaleTimeString();
-        })
-        .catch(error => {
-          document.getElementById('status3D').innerText = "エラー";
-          document.getElementById('status3D').style.backgroundColor = "#dc3545";
-          console.error("3D Error:", error);
-        });
-    }    
-
-// 🚀 画面が開いた瞬間に、すべての通信をスタートさせる
+    // 🚀 画面が開いた瞬間に通信をスタート
     window.addEventListener('DOMContentLoaded', () => {
-      fetchTotalAccess(); // ⭕️ ページを開いた時の最初の1回だけカウントする
-      fetchStatus1A();    // 1A起動
-      fetchStatus1B();    // 1B起動
-      fetchStatus1C();    // 1C起動
-      fetchStatus1D();    // 1D起動
-      fetchStatus2A();    // 2A起動
-      fetchStatus2B();    // 2B起動
-      fetchStatus2C();    // 2C起動
-      fetchStatus2D();    // 2D起動
-      fetchStatus3A();    // 3A起動
-      fetchStatus3B();    // 3B起動
-      fetchStatus3C();    // 3C起動
-      fetchStatus3D();    // 3D起動
-
+      fetchTotalAccess();    // アクセスカウントを取得（初回のみ）
+      refreshAllClasses();   // 全クラスの混雑状況を一括取得
       
-      // 1分ごとに自動で最新情報に更新する（混雑状況だけ！）
+      // 1分ごとに混雑状況だけを自動更新
       setInterval(() => {
-        fetchStatus1A();    // 1Aだけ更新
-        fetchStatus1B();    // 1Bだけ更新
-        fetchStatus1C();    // 1Cだけ更新
-        fetchStatus1D();    // 1Dだけ更新
-        fetchStatus2A();    // 2Aだけ更新
-        fetchStatus2B();    // 2Bだけ更新
-        fetchStatus2C();    // 2Cだけ更新
-        fetchStatus2D();    // 2Dだけ更新
-        fetchStatus3A();    // 3Aだけ更新
-        fetchStatus3B();    // 3Bだけ更新
-        fetchStatus3C();    // 3Cだけ更新
-        fetchStatus3D();    // 3Dだけ更新
-
-
-
+        refreshAllClasses();
       }, 60000); 
     });
   </script>
