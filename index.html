@@ -442,9 +442,13 @@
     };
 
     // すべてのクラスを一括更新する関数
+// すべてのクラスを「時間差」で順番に更新する関数（通信の詰まりを防止）
     function refreshAllClasses() {
-      Object.keys(classApiMap).forEach(className => {
-        fetchClassStatus(className, classApiMap[className]);
+      Object.keys(classApiMap).forEach((className, index) => {
+        // 1クラスごとに 100ms × index 秒ずつ実行タイミングをずらす
+        setTimeout(() => {
+          fetchClassStatus(className, classApiMap[className]);
+        }, index * 100); 
       });
     }
 
