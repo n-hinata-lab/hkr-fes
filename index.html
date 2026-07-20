@@ -199,6 +199,41 @@
       }
     }
 
+/* YouTube風カウンターのスタイル（縦並び・崩れ防止版） */
+.flip-counter {
+  display: flex;          /* 数字の桁だけを横に並べる */
+  justify-content: flex-start; /* 左寄せ（中央にしたい場合は center に変更してください） */
+  overflow: hidden;       /* はみ出た数字の列を隠す */
+  height: 48px;           /* 元の48pxの大きさに合わせる */
+  line-height: 48px;
+  margin: 10px 0;
+  font-family: 'Courier New', Courier, monospace; /* 桁ブレ防止 */
+  font-size: 48px;        /* 元の大きい数字のサイズ */
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.digit-container {
+  position: relative;
+  width: 28px;            /* 文字サイズ48pxに合わせた横幅 */
+  height: 100%;
+  text-align: center;
+}
+
+.digit-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1); /* YouTubeの吸着の動き */
+}
+
+.digit-strip span {
+  display: block;
+  height: 48px;           /* 1文字分の高さ */
+}
 </style>
 
 </head>
@@ -209,10 +244,14 @@
   <div class="main-container">
     
     <div class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-title">現在の累計アクセス数</div>
-        <div class="access-counter" id="total-preview">0</div>
-      </div>
+<!-- 📊 累計アクセス数表示エリア（見やすく縦並びに修正） -->
+<div class="sidebar-section">
+  <div class="sidebar-title">現在の累計アクセス数</div>
+  <div id="total-preview" class="flip-counter">
+    <!-- ここにYouTube風の動く数字が入ります -->
+    <div class="digit-container"><div class="digit-strip">0</div></div>
+  </div>
+</div>
 
       <div class="sidebar-section" style="margin-top: 50px;">
         <div class="sidebar-text">クラスで作られた<br>webサイトはこちらから見れます。<br>※作られているクラスのみ見ることができます</div>
@@ -324,59 +363,76 @@
 
   <!-- ⚙️ プログラム部分（すべての処理を1つに綺麗にまとめました！） -->
   <script>
-    // 📊 累計アクセス数カウンターの処理
-// 📊 累計アクセス数カウンターの処理（YouTube Studio風アニメーション付き）
-    function animateCountUp(targetNumber) {
-      const element = document.getElementById('total-preview');
-      // 現在表示されている数字を取得（なければ0）
-      let currentNumber = parseInt(element.innerText, 10) || 0;
+      // 🎞️ 数字の縦長テープを生成して、下から上へシャッとスライドさせる関数
       
-      // すでに同じ数字なら何もしない
-      if (currentNumber === targetNumber) return;
+    function updateYouTubeCounter(targetNumber) {
+      const counterContainer = document.getElementById('total-preview');
+      const targetStr = String(targetNumber);
+  
+      // 現在表示されている桁のコンテナ数を取得
+      let currentContainers = counterContainer.querySelectorAll('.digit-container');
+  
+     // 桁数が変わった、または初回の場合は構造をリセットして作り直す
+     if (currentContainers.length !== targetStr.length) {
+       counterContainer.innerHTML = '';
+       for (let i = 0; i < targetStr.length; i++) {
+         const container = document.createElement('div');
+         container.className = 'digit-container';
+      
+          const strip = document.createElement('div');
+          strip.className = 'digit-strip';
+      
+         // 0から9までの数字を縦一列に並べたテープを作る
+         for (let j = 0; j <= 9; j++) {
+           const span = document.createElement('span');
+           span.innerText = j;
+           strip.appendChild(span);
+         }
+      
+         container.appendChild(strip);
+         counterContainer.appendChild(container);
+       }
+       // 新しく作った要素を再取得
+       currentContainers = counterContainer.querySelectorAll('.digit-container');
+     }
 
-      const duration = 1500; // アニメーション全体の時間（1.5秒）
-      const frameRate = 30;  // 1秒間に何回数字を書き換えるか（スムーズさ）
-      const totalFrames = Math.round(duration / (1000 / frameRate));
-      let frame = 0;
+     // 各桁のテープを、目標の数字の位置まで下から上へ引っ張り上げる
+     // (例: 「5」なら、5文字分(50%)だけ上にマイナス移動させる)
+// 各桁のテープを目標の数字の位置まで上に引っ張り上げる
+  setTimeout(() => {
+    currentContainers.forEach((container, index) => {
+      const strip = container.querySelector('.digit-strip');
+      const digit = parseInt(targetStr[index], 10);
+      
+      // 💡 ここを 48 に変更します！（1文字の高さ48px分だけずらす）
+      const moveY = -(digit * 48); 
+      strip.style.transform = `translateY(${moveY}px)`; // 👈 ここも rem から px に変わります
+    });
+  }, 50);
+    }
 
-      // イージング関数（YouTube風に、最初は速く、最後は滑らかにゆっくり止まる動き）
-      function easeOutQuad(t) {
-        return t * (2 - t);
+// 🌐 データを取ってくる関数（中身をスライド用に変更）
+function fetchTotalAccess() {
+  const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
+  fetch(url, { mode: 'cors' })
+    .then(response => {
+      if (!response.ok) throw new Error('ネットワークエラー');
+      return response.json();
+    })
+    .then(data => {
+      if (data.total_access) {
+        // 💡 新しいスライド式カウンターに数値を渡す！
+        updateYouTubeCounter(data.total_access);
       }
+    })
+    .catch(error => {
+      console.error("カウンター読み込みエラー:", error);
+      // エラー時は通常のテキストで表示
+      document.getElementById('total-preview').innerText = "---";
+    });
+}
 
-      const timer = setInterval(() => {
-        frame++;
-        const progress = easeOutQuad(frame / totalFrames);
-        // 現在の値から目標値までの途中経過を計算
-        const currentProgressValue = Math.round(currentNumber + (targetNumber - currentNumber) * progress);
-        
-        element.innerText = currentProgressValue;
 
-        if (frame >= totalFrames) {
-          clearInterval(timer);
-          element.innerText = targetNumber; // 最後に確実に目標値にする
-        }
-      }, 1000 / frameRate);
-    }
-
-    function fetchTotalAccess() {
-      const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
-      fetch(url, { mode: 'cors' })
-        .then(response => {
-          if (!response.ok) throw new Error('ネットワークエラー');
-          return response.json();
-        })
-        .then(data => {
-          if (data.total_access) {
-            // 💡 直接書き換えるのではなく、アニメーション関数を呼び出す！
-            animateCountUp(data.total_access);
-          }
-        })
-        .catch(error => {
-          console.error("カウンター読み込みエラー:", error);
-          document.getElementById('total-preview').innerText = "---";
-        });
-    }
 
     // 🔴 1Aの混雑状況を取ってくる処理
     function fetchStatus1A() {
