@@ -149,13 +149,33 @@
       margin: 0; 
     }
 
-    /* スマホなどの画面が狭いときの対策 */
+/* スマホなどの画面が狭いときのレイアウト調整 */
     @media (max-width: 900px) {
       .main-container {
         flex-direction: column;
+        padding: 20px 15px; /* 全体の余白をスマホ用に左右均等へ調整 */
       }
+
+      .content-title {
+        text-align: center; /* タイトル「各クラスの混雑状況」を中央揃えに */
+      }
+
       .grid-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2列で均等配置 */
+        gap: 12px;                             /* カード同士の間隔を少し詰めて収まりやすく */
+        width: 100%;                           /* 横幅いっぱいに広げて左右均等にする */
+        box-sizing: border-box;
+      }
+
+      .class-card {
+        padding: 12px 8px; /* カード内の余白を少し調整して横幅を確保 */
+      }
+
+      .status-badge {
+        min-width: 0;       /* カードからはみ出ないように最小幅の固定を解除 */
+        width: 90%;         /* カードの中で綺麗に収まるサイズに */
+        padding: 8px 0;
+        font-size: 14px;    /* 文字サイズをスマホ向けに最適化 */
       }
     }
 
@@ -264,6 +284,7 @@
         <div class="sidebar-text">学校内マップを見るページは<br>こちらから見れます。</div>
         <a href="mapver1.2.html" class="link-button">学校内マップを見る</a>
       </div>
+
     </div>
 
     <div class="content-area">
@@ -386,6 +407,8 @@
           <p>
             エラーが発生する場合は時間をおいてから再読み込みをしてみてください。
           </p>
+        <div class="sidebar-text">ver.β0.8.1</div>
+
         </div>
       </div>
     </div>
