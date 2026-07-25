@@ -194,6 +194,50 @@
       display: block;
       height: 48px;
     }
+
+    /* 混雑状況の段階（凡例エリア） */
+.status-legend-section {
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.legend-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.legend-badges {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.legend-badge {
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 110px;
+}
+
+.legend-green  { background-color: #28a745; color: white; }
+.legend-yellow { background-color: #ffc107; color: #333; }
+.legend-orange { background-color: #fd7e14; color: white; }
+.legend-red    { background-color: #dc3545; color: white; }
+
+.legend-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111;
+}
+
+.legend-description p {
+  margin: 0 0 15px 0;
+}
+
   </style>
 </head>
 <body>
@@ -224,6 +268,7 @@
 
     <div class="content-area">
       <div class="content-title">各クラスの混雑状況</div>
+
       
       <div class="grid-container">
         
@@ -321,7 +366,27 @@
           <div class="exhibit-name">フルーツドリンク</div>
           <div id="status3D" class="status-badge">提供無し</div>
         </div>
+      </div>
+      <!-- 混雑状況の段階（説明セクション） -->
+      <div class="status-legend-section">
+        <div class="legend-title">混雑状況の段階</div>
+        
+        <div class="legend-badges">
+          <div class="legend-badge legend-green">空いています</div>
+          <div class="legend-badge legend-yellow">やや混雑</div>
+          <div class="legend-badge legend-orange">混雑</div>
+          <div class="legend-badge legend-red">とても混雑</div>
+        </div>
 
+        <div class="legend-description">
+          <p>
+            混雑状況の段階は４段階です。<br>
+            あくまでも推定です。正確であるとは限りません。<br>
+          </p>
+          <p>
+            エラーが発生する場合は時間をおいてから再読み込みをしてみてください。
+          </p>
+        </div>
       </div>
     </div>
   </div>
