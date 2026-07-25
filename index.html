@@ -231,14 +231,14 @@
         <div class="class-card">
           <div class="class-name">1A</div>
           <div class="exhibit-name">（出し物の名前）</div>
-          <div id="status1A" class="status-badge">読込中...</div>
-          <p id="time1A" class="update-time">--:--:--</p>
+          <div id="status1A" class="status-badge">提供無し</div>
+
         </div>
 
         <!-- 1B -->
         <div class="class-card">
           <div class="class-name">1B</div>
-          <div class="exhibit-name">射的</div>
+          <div class="exhibit-name">ボウリング</div>
           <div id="status1B" class="status-badge">読込中...</div>
           <p id="time1B" class="update-time">--:--:--</p>
         </div>
@@ -246,7 +246,7 @@
         <!-- 1C -->
         <div class="class-card">
           <div class="class-name">1C</div>
-          <div class="exhibit-name">おばけ屋敷</div>
+          <div class="exhibit-name">バスケットボール</div>
           <div id="status1C" class="status-badge">読込中...</div>
           <p id="time1C" class="update-time">--:--:--</p>
         </div>
@@ -255,16 +255,16 @@
         <div class="class-card">
           <div class="class-name">1D</div>
           <div class="exhibit-name">ストラックアウト</div>
-          <div id="status1D" class="status-badge">読込中...</div>
-          <p id="time1D" class="update-time">--:--:--</p>
+          <div id="status1D" class="status-badge">提供無し</div>
+
         </div>
 
         <!-- 2A -->
         <div class="class-card">
           <div class="class-name">2A</div>
-          <div class="exhibit-name">からあげ</div>
-          <div id="status2A" class="status-badge">読込中...</div>
-          <p id="time2A" class="update-time">--:--:--</p>
+          <div class="exhibit-name">ソーダフロート</div>
+          <div id="status2A" class="status-badge">提供無し</div>
+
         </div>
 
         <!-- 2B -->
@@ -318,9 +318,8 @@
         <!-- 3D -->
         <div class="class-card">
           <div class="class-name">3D</div>
-          <div class="exhibit-name">トロピカルドリンク</div>
-          <div id="status3D" class="status-badge">読込中...</div>
-          <p id="time3D" class="update-time">--:--:--</p>
+          <div class="exhibit-name">フルーツドリンク</div>
+          <div id="status3D" class="status-badge">提供無し</div>
         </div>
 
       </div>
@@ -427,18 +426,16 @@
 
     // 各クラスの名前とAPIのURLの対応表（データマップ）
     const classApiMap = {
-      "1A": "https://obu14wsclj.execute-api.ap-southeast-2.amazonaws.com/",
       "1B": "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/",
       "1C": "https://auf0gmxo11.execute-api.ap-southeast-2.amazonaws.com/",
-      "1D": "https://ab52z1xs76.execute-api.ap-southeast-2.amazonaws.com/",
-      "2A": "https://9qmsx7x665.execute-api.ap-southeast-2.amazonaws.com/",
+
       "2B": "https://9em8vixtjf.execute-api.ap-southeast-2.amazonaws.com/",
       "2C": "https://qnuphfbbn0.execute-api.ap-southeast-2.amazonaws.com/",
       "2D": "https://cz0vnh5o16.execute-api.ap-southeast-2.amazonaws.com/",
       "3A": "https://9dr47jidx0.execute-api.ap-southeast-2.amazonaws.com/",
       "3B": "https://mmu1ftlc3i.execute-api.ap-southeast-2.amazonaws.com/",
       "3C": "https://1cacs3eo4d.execute-api.ap-southeast-2.amazonaws.com/",
-      "3D": "https://wb7m7c8p84.execute-api.ap-southeast-2.amazonaws.com/"
+
     };
 
     // すべてのクラスを一括更新する関数
