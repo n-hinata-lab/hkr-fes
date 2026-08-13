@@ -384,6 +384,18 @@ html, body {
     font-size: 16px;
   }
 }
+
+/* 🌟 ページ読み込み時のフェードインアニメーション */
+body {
+  opacity: 0; /* 最初は透明にしておく */
+  transition: opacity 0.8s ease-in-out; /* 0.8秒かけてふわっと表示 */
+}
+
+/* JavaScriptでこのクラスがつくとフェードインが始まります */
+body.fade-in {
+  opacity: 1; /* 徐々に不透明（くっきり表示）へ */
+}
+
   </style>
 
 </head>
@@ -707,5 +719,11 @@ html, body {
     });
   </script>
 
+<!-- 🌟 ページ読み込み完了時にフェードインを起動する処理 -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('fade-in');
+  });
+</script>
 </body>
 </html>
