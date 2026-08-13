@@ -385,22 +385,9 @@ html, body {
   }
 }
 
-/* 🌟 ページ読み込み時のフェードインアニメーション */
-body {
-  opacity: 0; /* 最初は透明にしておく */
-  transition: opacity 0.8s ease-in-out; /* 0.8秒かけてふわっと表示 */
-}
-
-/* JavaScriptでこのクラスがつくとフェードインが始まります */
-body.fade-in {
-  opacity: 1; /* 徐々に不透明（くっきり表示）へ */
-}
-
   </style>
-
 </head>
 <body>
-
   <header>学校祭総合情報サイト</header>
 
   <div class="main-container">
@@ -550,7 +537,7 @@ body.fade-in {
           <p>
             エラーが発生する場合は時間をおいてから再読み込みをしてみてください。
           </p>
-        <div class="sidebar-text">ver.β0.9</div>
+        <div class="sidebar-text">ver.β0.9.1</div>
 
         </div>
       </div>
@@ -719,11 +706,6 @@ body.fade-in {
     });
   </script>
 
-<!-- 🌟 ページ読み込み完了時にフェードインを起動する処理 -->
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('fade-in');
-  });
-</script>
+
 </body>
 </html>
