@@ -258,7 +258,134 @@
   margin: 0 0 15px 0;
 }
 
+
+  /* 1. ページ全体の余白を消して左右端まで広げるための必須設定 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* 2. フッター外枠（背景色を画面の左端から右端まで100%広げる） */
+.site-footer {
+  width: 100%;
+  background-color: #4289B9; /* 画像のきれいな青色 */
+  color: #ffffff;
+  padding: 50px 0 40px 0;
+  box-sizing: border-box;
+}
+
+/* 3. 内側のレイアウト領域（左右の配置バランス調整） */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* 下揃えで配置 */
+  box-sizing: border-box;
+}
+
+/* 4. サイトマップエリア */
+.sitemap-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+/* サイトマップのリスト表示設定 */
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sitemap-list li {
+  margin-bottom: 12px;
+}
+
+/* 通常（未選択）のリンク表示：少し色を薄くする */
+.sitemap-list a {
+  color: rgba(255, 255, 255, 0.65); /* 未選択ページは少し透けさせて薄く表示 */
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  
+  /* 💡 フェードアニメーションの設定（0.25秒かけて滑らかに色を変化させる） */
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* マウスカーソルが重なったとき（ホバー時）：白くして少し右に動かすフェード演出 */
+.sitemap-list a:hover {
+  color: #ffffff; /* くっきりした白に変化 */
+  opacity: 1;
+  transform: translateX(4px); /* 4pxだけ右に滑らかにズレる動きを追加 */
+}
+
+/* 🌟 今開いているページ（カレントページ）の表示：最初からクッキリした白 */
+.sitemap-list li.active a,
+.sitemap-list a.active {
+  color: #ffffff;
+  opacity: 1;
+  position: relative;
+}
+
+/* （任意）今開いているページの横に小さな点（インジケーター）をつける演出 */
+.sitemap-list li.active a::before,
+.sitemap-list a.active::before {
+  content: "・";
+  position: absolute;
+  left: -14px;
+  color: #ffffff;
+}
+
+/* 5. 右側ブランド・ロゴエリア */
+.footer-brand {
+  text-align: right;
+}
+
+/* HAKURYO画像ロゴ */
+.footer-logo {
+  width: 320px; /* ロゴ画像の表示幅（必要に応じて調整してください） */
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 12px;
+}
+
+.copyright {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+/* 6. スマホ表示（画面幅が狭い端末）への最適化 */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 25px;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    text-align: left;
+    width: 100%;
+  }
+
+  .footer-logo {
+    margin-left: 0;
+    width: 240px; /* スマホ用に少し小さく調整 */
+  }
+
+  .sitemap-list a {
+    font-size: 16px;
+  }
+}
   </style>
+
 </head>
 <body>
 
@@ -289,7 +416,6 @@
         <div class="sidebar-text">来場者の方へ<br>アンケートにご協力ください</div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsgWsuddum8mx66uCt6mQHSYzfUMkVpnWFUYlIgNvPAjjxsQ/viewform" class="link-button">Googleフォームズ</a>
       </div>
-
     </div>
 
     <div class="content-area">
@@ -417,7 +543,34 @@
         </div>
       </div>
     </div>
+    
   </div>
+  
+  <!-- 全幅フッター -->
+<footer class="site-footer">
+  <div class="footer-container">
+    
+    <!-- 左側：サイトマップ -->
+    <div class="footer-sitemap">
+      <h2 class="sitemap-title">サイトマップ</h2>
+      <ul class="sitemap-list">
+        <li class="active"><a href="index.html">各クラスの混雑状況</a></li>
+        <li><a href="class_site.html">各クラスのwebサイト</a></li>
+        <li><a href="mapver1.2.html">学校内マップ</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfsgWsuddum8mx66uCt6mQHSYzfUMkVpnWFUYlIgNvPAjjxsQ/viewform">アンケート</a></li>
+      </ul>
+    </div>
+
+    <!-- 右側：ロゴ画像と著作権表記 -->
+    <div class="footer-brand">
+      <!-- ⚠️ srcの画像パスはご自身の画像ファイル名に書き換えてください -->
+      <img src="picture/img_logo_top_en.svg" alt="HAKURYO" class="footer-logo">
+      <p class="copyright">© 全ての画像の私版・２次利用をお断りします</p>
+    </div>
+
+  </div>
+</footer>
+
 
   <!-- ⚙️ プログラム部分（超スッキリ共通化しました！） -->
   <script>
