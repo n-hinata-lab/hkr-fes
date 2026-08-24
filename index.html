@@ -1,343 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>第67回 柏稜祭 パンフレット | 函館大学付属柏稜高等学校</title>
-<style>
-  :root{
-    --sky:#2fa8e0;
-    --sun:#f4a11c;
-    --purple:#8a63d2;
-    --ink:#1f2430;
-    --paper:#fffdf7;
-    --line:#d8cfb8;
-    --accent:#e05a4e;
-    --panel:#fff7e8;
-  }
-  *{box-sizing:border-box;}
-  
-  /* 1. ページ全体の余白を削除して左右端まで広げる基本設定 */
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Meiryo", sans-serif;
-    line-height: 1.8;
-  }
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWREQHGGGH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EWREQHGGGH');
+  </script>
 
-  /* 上部ヘッダー（画面横幅いっぱいに指定） */
-  header {
-    width: 100%;
-    background-color: #4682b4;
-    color: #ffffff;
-    padding: 15px 25px;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Inter, sans-serif;
-    font-size: 22px;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  img{max-width:100%;height:auto;}
-
-  /* メインコンテンツ囲み（1000px幅中央寄せ） */
-  .wrap{
-    max-width:1000px;
-    margin:0 auto;
-    padding:0 20px 60px;
-  }
-
-  /* ---- cover ---- */
-  .cover{
-    width:100%;
-    margin:0 auto;
-  }
-  .cover-frame{
-    width:100%;
-    overflow:hidden;
-    border-radius:6px;
-  }
-  .cover-frame img{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:6px;
-  }
-
-  /* ---- section headers ---- */
-  h1.page-title{
-    text-align:center;
-    font-size:20px;
-    letter-spacing:.05em;
-    margin:50px 0 30px;
-    padding-bottom:10px;
-    border-bottom:3px solid var(--sky);
-    color:var(--ink);
-  }
-  h2.block-title{
-    font-size:18px;
-    background:var(--sky);
-    color:#fff;
-    padding:8px 16px;
-    border-radius:4px 4px 0 0;
-    margin:36px 0 0;
-    letter-spacing:.05em;
-  }
-  h2.block-title.orange{background:var(--sun);}
-  h2.block-title.red{background:var(--accent);}
-  h2.block-title.purple{background:var(--purple);}
-
-  .box{
-    border:1px solid var(--line);
-    border-top:none;
-    border-radius:0 0 4px 4px;
-    padding:20px 22px;
-    background:#fff;
-  }
-
-  .cols{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:0 32px;
-    align-items:start;
-  }
-  @media (max-width:760px){
-    .cols{grid-template-columns:1fr;}
-  }
-
-  /* ---- greetings ---- */
-  .greeting p{margin:0 0 14px;}
-  .greeting .meta{
-    text-align:right;
-    font-size:14px;
-    margin-bottom:4px;
-  }
-  .greeting .meta .school{display:block;}
-  .greeting .theme{
-    text-align:center;
-    font-size:20px;
-    font-weight:bold;
-    margin:22px 0;
-    padding:14px 0;
-    background:var(--panel);
-    border-left:5px solid var(--accent);
-    border-right:5px solid var(--accent);
-  }
-  .greeting h3{
-    text-align:center;
-    font-size:19px;
-    margin:10px 0 22px;
-    color:var(--sky);
-  }
-
-  /* ---- PR lists ---- */
-  ul.pr-list{
-    list-style:none;
-    margin:0;
-    padding:0;
-  }
-  ul.pr-list li{
-    margin:0 0 16px;
-    padding-bottom:14px;
-    border-bottom:1px dotted var(--line);
-  }
-  ul.pr-list li:last-child{border-bottom:none;}
-  .pr-name{
-    display:inline-block;
-    font-weight:bold;
-    color:var(--accent);
-    margin-right:8px;
-  }
-  .pr-item{
-    font-weight:bold;
-  }
-  .pr-desc{
-    margin:4px 0 0;
-    font-size:14.5px;
-    color:#3a3a3a;
-  }
-
-  .credit-box{
-    margin-top:26px;
-    text-align:center;
-    font-size:14px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:14px;
-  }
-  .credit-box p{margin:4px 0;}
-
-  /* ---- schedule ---- */
-  .day-card{
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:16px 20px;
-    margin-bottom:22px;
-    background:#fff;
-  }
-  .day-card h4{
-    margin:0 0 10px;
-    font-size:17px;
-    color:var(--sun);
-  }
-  .day-card ul{margin:8px 0 0;padding-left:1.2em;}
-  .day-card .note{font-size:13px;color:#777;}
-
-  .info-list{padding-left:0;list-style:none;margin:0;}
-  .info-list > li{margin-bottom:14px;}
-  .info-list .cat{
-    font-weight:bold;
-    display:inline-block;
-    background:var(--sky);
-    color:#fff;
-    font-size:12.5px;
-    padding:2px 8px;
-    border-radius:4px;
-    margin-right:8px;
-  }
-  .sub-list{margin:6px 0 0 1.4em;padding:0;}
-  .sub-list li{list-style:disc;margin-bottom:2px;}
-
-  .honbu{
-    margin-top:18px;
-    font-size:14px;
-    background:var(--panel);
-    border-left:4px solid var(--accent);
-    padding:10px 14px;
-  }
-
-  /* ---- map ---- */
-  .map-frame{
-    width:100%;
-    overflow:hidden;
-    border-radius:6px;
-    line-height:0;
-  }
-  .map-frame img{
-    width:100%;
-    height:auto;
-    max-width:100%;
-    display:block;
-    border-radius:6px;
-  }
-  .caution{
-    text-align:center;
-    color:var(--accent);
-    font-weight:bold;
-    margin-top:10px;
-  }
-
-  /* ---- フッター（画面の左端から右端まで広げる） ---- */
-  .site-footer {
-    width: 100%;
-    background-color: #4289B9;
-    color: #ffffff;
-    padding: 50px 0 40px 0;
-    box-sizing: border-box;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    box-sizing: border-box;
-  }
-
-  .sitemap-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0 0 20px 0;
-    letter-spacing: 1px;
-  }
-
-  .sitemap-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .sitemap-list li {
-    margin-bottom: 12px;
-  }
-
-  .sitemap-list a {
-    color: rgba(255, 255, 255, 0.65);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block;
-    transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-  }
-
-  .sitemap-list a:hover {
-    color: #ffffff;
-    opacity: 1;
-    transform: translateX(4px);
-  }
-
-  .sitemap-list li.active a,
-  .sitemap-list a.active {
-    color: #ffffff;
-    opacity: 1;
-    position: relative;
-  }
-
-  .sitemap-list li.active a::before,
-  .sitemap-list a.active::before {
-    content: "・";
-    position: absolute;
-    left: -14px;
-    color: #ffffff;
-  }
-
-  .footer-brand {
-    text-align: right;
-  }
-
-  .footer-logo {
-    width: 320px;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-bottom: 12px;
-  }
-
-  .copyright {
-    font-size: 13px;
-    margin: 0;
-    opacity: 0.9;
-    white-space: nowrap;
-  }
-
-  /* スマホ表示向けレスポンシブ設定 */
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0 25px;
-      gap: 40px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>総合情報サイト</title>
+  <style>
+    /* 全体のリセットと背景色設定 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Inter, sans-serif;
+      background-color: #dcdcdc;
+      color: #000000;
     }
 
-    .footer-brand {
-      text-align: left;
-      width: 100%;
+    /* 上部ヘッダー */
+    header {
+      background-color: #4682b4;
+      color: #ffffff;
+      padding: 15px 25px;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
-    .footer-logo {
-      margin-left: 0;
-      width: 240px;
-    }
-
-    .sitemap-list a {
-      font-size: 16px;
-    }
-  }
 
 /* ヘッダー全体（背景は青のままにします） */
 .site-header {
@@ -430,235 +124,716 @@
   white-space: nowrap;
 }
 
-</style>
+    /* メインレイアウト */
+    .main-container {
+      display: flex;
+      padding: 30px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 左側サイドバー */
+    .sidebar {
+      width: 250px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 35px;
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .sidebar-text {
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    /* 青いボタンの共通スタイル */
+    .link-button {
+      display: block;
+      width: 100%;
+      background-color: #468aa6;
+      color: #ffffff;
+      text-align: center;
+      padding: 12px 0;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .link-button:active {
+      background-color: #356b82;
+      transform: translateY(2px);
+    }
+
+    /* 右側メインコンテンツ */
+    .content-area {
+      flex-grow: 1;
+    }
+
+    .content-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+
+    /* クラスカードが並ぶグリッド */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* 各クラスのカード */
+    .class-card {
+      background-color: #e6e6e6;
+      border: 1px solid #999999;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .class-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+
+    .exhibit-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    /* 混雑状況のバッジ（重複を統合して綺麗に整理しました！） */
+    .status-badge { 
+      display: inline-block; 
+      padding: 8px 20px;
+      border-radius: 30px; 
+      font-size: 16px;
+      font-weight: bold; 
+      color: white; 
+      margin-bottom: 10px; 
+      min-width: 120px; 
+      background-color: #828582; /* 初期状態のグレー */
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+      transition: all 0.3s ease; 
+    }
+  
+    .update-time { 
+      font-size: 11px; 
+      color: #7f8c8d; 
+      margin: 0; 
+    }
+
+/* スマホなどの画面が狭いときのレイアウト調整 */
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+        padding: 20px 15px; /* 全体の余白をスマホ用に左右均等へ調整 */
+      }
+
+      .content-title {
+        text-align: center; /* タイトル「各クラスの混雑状況」を中央揃えに */
+      }
+
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2列で均等配置 */
+        gap: 12px;                             /* カード同士の間隔を少し詰めて収まりやすく */
+        width: 100%;                           /* 横幅いっぱいに広げて左右均等にする */
+        box-sizing: border-box;
+      }
+
+      .class-card {
+        padding: 12px 8px; /* カード内の余白を少し調整して横幅を確保 */
+      }
+
+      .status-badge {
+        min-width: 0;       /* カードからはみ出ないように最小幅の固定を解除 */
+        width: 90%;         /* カードの中で綺麗に収まるサイズに */
+        padding: 8px 0;
+        font-size: 14px;    /* 文字サイズをスマホ向けに最適化 */
+      }
+    }
+
+    /* YouTube風カウンターのスタイル */
+    .flip-counter {
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      height: 48px;
+      line-height: 48px;
+      margin: 10px 0;
+      font-family: 'Arial', Courier, monospace;
+      font-size: 48px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .digit-container {
+      position: relative;
+      width: 28px;
+      height: 100%;
+      text-align: center;
+    }
+
+    .digit-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .digit-strip span {
+      display: block;
+      height: 48px;
+    }
+
+    /* 混雑状況の段階（凡例エリア） */
+.status-legend-section {
+  margin-top: 40px;
+  padding-top: 20px;
+}
+
+.legend-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.legend-badges {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.legend-badge {
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 110px;
+}
+
+.legend-green  { background-color: #28a745; color: white; }
+.legend-yellow { background-color: #ffc107; color: #333; }
+.legend-orange { background-color: #fd7e14; color: white; }
+.legend-red    { background-color: #dc3545; color: white; }
+
+.legend-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111;
+}
+
+.legend-description p {
+  margin: 0 0 15px 0;
+}
+
+
+  /* 1. ページ全体の余白を消して左右端まで広げるための必須設定 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* 2. フッター外枠（背景色を画面の左端から右端まで100%広げる） */
+.site-footer {
+  width: 100%;
+  background-color: #4289B9; /* 画像のきれいな青色 */
+  color: #ffffff;
+  padding: 50px 0 40px 0;
+  box-sizing: border-box;
+}
+
+/* 3. 内側のレイアウト領域（左右の配置バランス調整） */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* 下揃えで配置 */
+  box-sizing: border-box;
+}
+
+/* 4. サイトマップエリア */
+.sitemap-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+/* サイトマップのリスト表示設定 */
+.sitemap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sitemap-list li {
+  margin-bottom: 12px;
+}
+
+/* 通常（未選択）のリンク表示：少し色を薄くする */
+.sitemap-list a {
+  color: rgba(255, 255, 255, 0.65); /* 未選択ページは少し透けさせて薄く表示 */
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  
+  /* 💡 フェードアニメーションの設定（0.25秒かけて滑らかに色を変化させる） */
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* マウスカーソルが重なったとき（ホバー時）：白くして少し右に動かすフェード演出 */
+.sitemap-list a:hover {
+  color: #ffffff; /* くっきりした白に変化 */
+  opacity: 1;
+  transform: translateX(4px); /* 4pxだけ右に滑らかにズレる動きを追加 */
+}
+
+/* 🌟 今開いているページ（カレントページ）の表示：最初からクッキリした白 */
+.sitemap-list li.active a,
+.sitemap-list a.active {
+  color: #ffffff;
+  opacity: 1;
+  position: relative;
+}
+
+/* （任意）今開いているページの横に小さな点（インジケーター）をつける演出 */
+.sitemap-list li.active a::before,
+.sitemap-list a.active::before {
+  content: "・";
+  position: absolute;
+  left: -14px;
+  color: #ffffff;
+}
+
+/* 5. 右側ブランド・ロゴエリア */
+.footer-brand {
+  text-align: right;
+}
+
+/* HAKURYO画像ロゴ */
+.footer-logo {
+  width: 320px; /* ロゴ画像の表示幅（必要に応じて調整してください） */
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 12px;
+}
+
+.copyright {
+  font-size: 13px;
+  margin: 0;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+/* 6. スマホ表示（画面幅が狭い端末）への最適化 */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 25px;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    text-align: left;
+    width: 100%;
+  }
+
+  .footer-logo {
+    margin-left: 0;
+    width: 240px; /* スマホ用に少し小さく調整 */
+  }
+
+  .sitemap-list a {
+    font-size: 16px;
+  }
+}
+
+/* フェードアニメーション */
+@view-transition {
+  navigation: auto;
+}
+
+  </style>
 </head>
 <body>
-
-  <!-- 上部ヘッダー -->
-
-    <header class="site-header">
-  <div class="header-container">
+  <header>
+      <div class="header-container">
     
     <!-- 左側：ヘッダーロゴやタイトル等（必要に応じて記述） -->
     <div class="header-logo">
-      柏稜祭パンフレット
+      総合情報サイト
     </div>
 
     <!-- 🌟 右上：ガラスデザインボタン -->
-    <a href="https://n-hinata-lab.github.io/hkr-fes/" class="glass-btn">
+    <a href="https://2026hkr-fes-panf.n-hinata-lab.workers.dev/" class="glass-btn">
       <!-- アイコン領域（画像パスを変更可能） -->
       <span class="btn-icon-wrapper">
         <img src="picture/change.svg" alt="" class="btn-icon">
       </span>
       <!-- テキスト領域（自由に変更可能） -->
-      <span class="btn-text">総合情報サイト</span>
+      <span class="btn-text">電子パンフレット</span>
     </a>
 
   </div>
-</header>
   </header>
 
-  <!-- 中央配置コンテンツエリア -->
-  <div class="wrap">
+  <div class="main-container">
+    
+    <div class="sidebar">
+      <!-- 📊 累計アクセス数表示エリア -->
+      <div class="sidebar-section">
+        <div class="sidebar-title">現在の累計アクセス数</div>
+        <div id="total-preview" class="flip-counter">
+          <!-- JSで自動生成されるため初期状態は空欄にします -->
+        </div>
+      </div>
 
-    <!-- 表紙 -->
-    <div class="cover">
-      <div class="cover-frame">
-        <picture>
-          <source media="(max-width:600px)" srcset="picture/s.top.jpg">
-          <img src="picture/top.jpg" alt="第67回柏稜祭 表紙">
-        </picture>
+      <div class="sidebar-section" style="margin-top: 50px;">
+        <div class="sidebar-text">各クラスで作られた<br>Webサイトはこちらから見れます。<br>※作られているクラスのみ見ることができます</div>
+        <a href="class_site.html" class="link-button">各クラスのWebサイト</a>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 50px;">
+        <div class="sidebar-text">学校内マップを見るページは<br>こちらから見れます。</div>
+        <a href="mapver1.2.html" class="link-button">学校内マップを見る</a>
+      </div>
+
+      <div class="sidebar-section" style="margin-top: 50px;">
+        <div class="sidebar-text">来場者の方へ<br>アンケートにご協力ください</div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsgWsuddum8mx66uCt6mQHSYzfUMkVpnWFUYlIgNvPAjjxsQ/viewform" class="link-button">Googleフォームズ</a>
       </div>
     </div>
 
-    <!-- 挨拶 / PR① -->
-    <div class="cols">
-      <div class="greeting">
-        <h1 class="page-title">令和８年 第６７回柏稜祭にあたって</h1>
-        <p class="meta">
-          <span class="school">函館大学付属柏稜高等学校</span>
-          校長 扇柳 尚英
-        </p>
-        <p>いよいよ、柏稜高校最大の行事、柏稜祭が始まります。</p>
-        <p>今年度のテーマは「爆裂柏稜～笑えばイイじゃーん～」です。</p>
-        <p>この柏稜祭には、クラス・クラブ・PTA による模擬店、ステージ発表等、生徒の皆さんが企画した様々なイベントが詰まっています。一人ひとりが存分に楽しむと同時に、ご来場くださった方々に柏稜生の本当の姿、本物のエネルギーを感じていただけるよう、心からのおもてなしをしましょう！</p>
-        <p>そして、この柏稜祭がみなさんにとって、最高の思い出、一生忘れることのない本当の思い出になることを祈っています！</p>
-        <p>ご来場の皆様方には、ぜひ、各クラス・クラブの催し物や展示をお楽しみいただき、柏稜生の Real を感じていただければ幸いです。</p>
+    <div class="content-area">
+      <div class="content-title">各クラスの混雑状況</div>
 
-        <h3>～柏稜祭へようこそ～</h3>
-        <p class="meta">生徒会長 能井 羽琉</p>
-        <p>今年度の柏稜祭にご来場いただき、誠にありがとうございます。生徒会長として、こうして無事に皆さんと柏稜祭を迎えられる事を、大変嬉しく思います。第 67 回柏稜祭のテーマは</p>
-        <div class="theme">「 爆裂柏稜 ～笑えばイイじゃーん～ 」</div>
-        <p>です。</p>
-        <p>みなさんは、この文化祭のためにクラスや部活内で何度も話し合い、様々な意見を出し合いながら、試行錯誤を繰り返しながら仲間と模擬店の準備に全力で取り組んできました。私自身その姿を校内のいたる所で目にして、今日という日をとても楽しみに待ち望んでいました。文化祭は、普段の学校生活ではなかなか味わえない特別な日です。準備してきた時間も含めて皆さんにとって忘れられない思い出になれる事を心から願っています。そしてたくさん笑って楽しんで頂きたいです。</p>
-        <p>最後になりますが、柏稜祭を開催するにあたってご協力してくださった先生方、保護者の皆様方、地域の方々、心より感謝を申し上げます。どうぞ柏稜生全員が、頑張って作り上げた柏稜祭をお楽しみください。</p>
-      </div>
-
-      <div>
-        <h2 class="block-title orange">クラス・クラブ模擬店ＰＲ①</h2>
-        <div class="box">
-          <ul class="pr-list">
-            <li><span class="pr-name">＜１年Ａ組＞</span><span class="pr-item">爆裂スーパーボールすくい</span>
-              <p class="pr-desc">すくえすぎて滅（当社比）<br>スーパーボールすくいをやってるとき、ビジュいいじゃん</p></li>
-            <li><span class="pr-name">＜１年Ｂ組＞</span><span class="pr-item">射的</span>
-              <p class="pr-desc">１年 B 組の縁日は射的です。豪華景品も用意していますので、ぜひご参加ください。</p></li>
-            <li><span class="pr-name">＜１年Ｃ組＞</span><span class="pr-item">お化け屋敷</span>
-              <p class="pr-desc">とある柏稜高校の夜…。何かが起こるといわれている。この校舎で起きる謎は未だに誰にも解き明かされていない…。</p></li>
-            <li><span class="pr-name">＜１年Ｄ組＞</span><span class="pr-item">ストラックアウト</span>
-              <p class="pr-desc">的を倒すのだ。</p></li>
-            <li><span class="pr-name">＜２年Ａ組＞</span><span class="pr-item">kobo's キッチン 唐揚げ</span>
-              <p class="pr-desc">めちゃめちゃおいしい物食べたい人カモーン！！</p></li>
-            <li><span class="pr-name">＜２年Ｂ組＞</span><span class="pr-item">まんまるど～なっちゅ♡</span>
-              <p class="pr-desc">某ミ〇ドよりおいしいど～なっちゅです！たべにきてね～！</p></li>
-            <li><span class="pr-name">＜２年Ｃ組＞</span><span class="pr-item">パフェ</span>
-              <p class="pr-desc">自分の好きなフルーツやソースを選択し、オリジナルパフェを作れます！</p></li>
-            <li><span class="pr-name">＜２年Ｄ組＞</span><span class="pr-item">2D わたあめ屋</span>
-              <p class="pr-desc">甘い大きいカラフルなわたあめ</p></li>
-            <li><span class="pr-name">＜３年Ａ組＞</span><span class="pr-item">そうめん</span>
-              <p class="pr-desc">今から皆さんは、そうめんです。</p></li>
-            <li><span class="pr-name">＜３年Ｂ組＞</span><span class="pr-item">キング・オブ・バナナ ～原点にして頂点～</span>
-              <p class="pr-desc">甘くおいしいチョコバナナ★ カラフルトッピングで見た目もかわいく、写真映えも!!</p></li>
-            <li><span class="pr-name">＜３年Ｃ組＞</span><span class="pr-item">グランメゾン 3-C</span>
-              <p class="pr-desc">餃子はグランメゾン 3-C にあり。餃子は万里を超える。</p></li>
-            <li><span class="pr-name">＜３年Ｄ組＞</span><span class="pr-item">トロピカルジュース～あの頃の輝きを～</span>
-              <p class="pr-desc">当日、お楽しみがあるよ～</p></li>
-            <li><span class="pr-name">◇ ＰＴＡ</span><span class="pr-item">野菜市と肉三昧</span>
-              <p class="pr-desc">『今年もやります野菜市！旬の新鮮野菜はもちろん、数量限定のアレが売っているかも！？<br>みんな大好き肉三昧も！ぜひＰＴＡブースへお越しください！』</p></li>
-            <li><span class="pr-name">◇ 事務</span><span class="pr-item">さつま揚げとこんにゃくのみそおでん</span>
-              <p class="pr-desc">定番のさつま揚げやこんにゃくに、こだわりの自家製みそだれをたっぷり加え、心を込めて作る自慢のみそおでんです！</p></li>
-          </ul>
-        </div>
-
-        <div class="credit-box">
-          <p>※ 今年度の柏稜祭ポスターは、３Ａ 木村 美月さん</p>
-          <p>柏稜祭テーマは、１年Ｃ組のみなさんの作品です。</p>
-          <p>パンフレットは、情報処理部の作品です</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PR② / 日程 -->
-    <div class="cols">
-      <div>
-        <h2 class="block-title orange">クラス・クラブ模擬店ＰＲ②</h2>
-        <div class="box">
-          <ul class="pr-list">
-            <li><span class="pr-name">＜ 野球部 ＞</span><span class="pr-item">漢の焼きそば！！！</span>
-              <p class="pr-desc">野球部が焼いた焼きそばいかがでしょうか。出来立てを提供できるように頑張ります。</p></li>
-            <li><span class="pr-name">＜ 女子ハンドボール部 ＞</span><span class="pr-item">ホットサンド</span>
-              <p class="pr-desc">毎年恒例となりました、女子ハンドボール部のホットサンドです！<br>大会参加費支払いのため、皆様たくさん買ってください！！</p></li>
-            <li><span class="pr-name">＜ 女子バスケットボール部 ＞</span><span class="pr-item">たこせん</span>
-              <p class="pr-desc">２年ぶりに復活！！ とっってもおいしい”たこせん”です！<br>待ってまーす♥</p></li>
-            <li><span class="pr-name">＜ サッカー部 ＞</span><span class="pr-item">冷たいジュース</span>
-              <p class="pr-desc">キンキンに冷えた最高の一杯をあなたに。</p></li>
-            <li><span class="pr-name">＜ 男子ハンドボール部 ＞</span><span class="pr-item">フランクフルト</span>
-              <p class="pr-desc">美味しいフランクフルト、食べにきて下さい！</p></li>
-            <li><span class="pr-name">＜ ＥＳＳ部 ＞</span><span class="pr-item">アイスティー、タピオカアイスティー、クッキー・English Cafe</span>
-              <p class="pr-desc">冷たくて美味しいタピオカドリンクを、無料のクッキーと一緒にぜひ味わってみてください。</p></li>
-          </ul>
-        </div>
-
-        <h2 class="block-title red">クラブ展示</h2>
-        <div class="box">
-          <ul class="pr-list">
-            <li><span class="pr-name">＜ 吹奏楽部 ＞</span><span class="pr-item">“柏吹”の演奏を届けます！</span>
-              <p class="pr-desc">皆様に、ステキな演奏とステキな時間を届けられるように頑張ります～(^o^)！</p></li>
-            <li><span class="pr-name">＜ 美術部 ＞</span><span class="pr-item">作品展示</span>
-              <p class="pr-desc">高文連で受賞した作品と日々の活動を描いている作品を展示しています。来場をお待ちしています。</p></li>
-            <li><span class="pr-name">＜ 理科研究部 ＞</span><span class="pr-item">アイスクリーム体験教室</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div>
-        <h2 class="block-title purple">第６７回 柏稜祭 日程</h2>
-        <div class="box">
-          <div class="day-card">
-            <h4>８月２８日（金）＜９：００～１２：４０終了予定＞</h4>
-            <ul>
-              <li>★ 吹奏楽部による演奏</li>
-              <li>★ 実行委員会企画</li>
-              <li>★ パフォーマンスショー（ダンス、カラオケ）</li>
-            </ul>
-            <p class="note">※ 一般の方の入場はできません</p>
-          </div>
-
-          <div class="day-card">
-            <h4>８月２９日（土）＜１０：００～１５：００＞</h4>
-            <p style="margin:0 0 8px;font-weight:bold;">□一般公開</p>
-            <ul class="info-list">
-              <li><span class="cat">展示・発表</span>
-                <ul class="sub-list">
-                  <li>学級旗 展示  校舎 垂れ幕</li>
-                  <li>部活動戦績・ユニフォーム展示室  ３階 第２講義室</li>
-                  <li>理科研究部 アイスクリーム体験教室  ２階 第１講義室</li>
-                  <li>美術部 作品展示  ３階 第３講義室</li>
-                </ul>
-              </li>
-              <li><span class="cat">■ 学校紹介</span>２階 自習室</li>
-              <li><span class="cat">■ 模擬店</span>第１・２体育館／２、３階の各教室</li>
-              <li><span class="cat">■ PTAによる</span>
-                <ul class="sub-list">
-                  <li>野菜市  第１体育館</li>
-                  <li>肉三昧</li>
-                </ul>
-              </li>
-              <li><span class="cat">■ 事務による</span>
-                <ul class="sub-list">
-                  <li>さつま揚げとこんにゃくのみそおでん  事務室前</li>
-                </ul>
-              </li>
-              <li><span class="cat">■ 吹奏楽部による演奏</span></li>
-              <li><span class="cat">■ ステージ発表</span>第１体育館</li>
-            </ul>
-            <div class="honbu">
-              ※ 柏稜祭実行本部 ２階 生徒会室（案内・迷子センター・学校紹介コーナー）<br>
-              何かございましたら本部へお越しください
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 校内マップ -->
-    <h1 class="page-title">R8. 柏稜祭 校舎見取図</h1>
-    <p class="caution">※4階は閉鎖しています。</p>
-    <div class="map-frame">
-      <picture>
-        <source media="(max-width:600px)" srcset="picture/map.jpg">
-        <img src="picture/map.jpg" alt="第67回柏稜祭 校舎見取図">
-      </picture>
-    </div>
-
-  </div> <!-- / .wrap (ここまでが幅1000px制限のエリア) -->
-
-  <!-- 全幅フッター（.wrapの外に出すことで画面左右いっぱいに広がる） -->
-  <footer class="site-footer">
-    <div class="footer-container">
       
-      <!-- 左側：サイトマップ -->
-      <div class="footer-sitemap">
-        <h2 class="sitemap-title">総合情報サイト</h2>
+      <div class="grid-container">
+        
+        <!-- 1A -->
+        <div class="class-card">
+          <div class="class-name">1A</div>
+          <div class="exhibit-name">スーパーボールすくい</div>
+          <div id="status1A" class="status-badge">提供無し</div>
 
-            <!-- 🌟 右上：ガラスデザインボタン -->
-    <a href="https://n-hinata-lab.github.io/hkr-fes/" class="glass-btn">
+        </div>
+
+        <!-- 1B -->
+        <div class="class-card">
+          <div class="class-name">1B</div>
+          <div class="exhibit-name">射的</div>
+          <div id="status1B" class="status-badge">読込中...</div>
+          <p id="time1B" class="update-time">--:--:--</p>
+          
+        </div>
+
+        <!-- 1C -->
+        <div class="class-card">
+          <div class="class-name">1C</div>
+          <div class="exhibit-name">お化け屋敷</div>
+          <div id="status1C" class="status-badge">読込中...</div>
+          <p id="time1C" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 1D -->
+        <div class="class-card">
+          <div class="class-name">1D</div>
+          <div class="exhibit-name">ストラックアウト</div>
+          <div id="status1D" class="status-badge">提供無し</div>
+
+        </div>
+
+        <!-- 2A -->
+        <div class="class-card">
+          <div class="class-name">2A</div>
+          <div class="exhibit-name">からあげ</div>
+          <div id="status2A" class="status-badge">提供無し</div>
+
+        </div>
+
+        <!-- 2B -->
+        <div class="class-card">
+          <div class="class-name">2B</div>
+          <div class="exhibit-name">ドーナツ</div>
+          <div id="status2B" class="status-badge">読込中...</div>
+          <p id="time2B" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 2C -->
+        <div class="class-card">
+          <div class="class-name">2C</div>
+          <div class="exhibit-name">パフェ</div>
+          <div id="status2C" class="status-badge">読込中...</div>
+          <p id="time2C" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 2D -->
+        <div class="class-card">
+          <div class="class-name">2D</div>
+          <div class="exhibit-name">わたあめ</div>
+          <div id="status2D" class="status-badge">読込中...</div>
+          <p id="time2D" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 3A -->
+        <div class="class-card">
+          <div class="class-name">3A</div>
+          <div class="exhibit-name">そうめん</div>
+          <div id="status3A" class="status-badge">読込中...</div>
+          <p id="time3A" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 3B -->
+        <div class="class-card">
+          <div class="class-name">3B</div>
+          <div class="exhibit-name">チョコバナナ</div>
+          <div id="status3B" class="status-badge">読込中...</div>
+          <p id="time3B" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 3C -->
+        <div class="class-card">
+          <div class="class-name">3C</div>
+          <div class="exhibit-name">餃子</div>
+          <div id="status3C" class="status-badge">読込中...</div>
+          <p id="time3C" class="update-time">--:--:--</p>
+        </div>
+
+        <!-- 3D -->
+        <div class="class-card">
+          <div class="class-name">3D</div>
+          <div class="exhibit-name">トロピカルドリンク</div>
+          <div id="status3D" class="status-badge">提供無し</div>
+        </div>
+      </div>
+      <!-- 混雑状況の段階（説明セクション） -->
+      <div class="status-legend-section">
+        <div class="legend-title">混雑状況の段階</div>
+        
+        <div class="legend-badges">
+          <div class="legend-badge legend-green">空いています</div>
+          <div class="legend-badge legend-yellow">やや混雑</div>
+          <div class="legend-badge legend-orange">混雑</div>
+          <div class="legend-badge legend-red">とても混雑</div>
+        </div>
+
+        <div class="legend-description">
+          <p>
+            混雑状況の段階は４段階です。<br>
+            あくまでも目安です。実際とは異なる場合があります。<br>
+          </p>
+          <p>
+            エラーが発生する場合は時間をおいてから再読み込みをしてみてください。
+          </p>
+        <div class="sidebar-text">ver.β0.9.2</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- 全幅フッター -->
+<footer class="site-footer">
+  <div class="footer-container">
+    
+    <!-- 左側：サイトマップ -->
+    <div class="footer-sitemap">
+      <h2 class="sitemap-title">サイトマップ</h2>
+      <ul class="sitemap-list">
+        <li class="active"><a href="index.html">各クラスの混雑状況</a></li>
+        <li><a href="class_site.html">各クラスのWebサイト</a></li>
+        <li><a href="mapver1.2.html">学校内マップ</a></li>
+        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfsgWsuddum8mx66uCt6mQHSYzfUMkVpnWFUYlIgNvPAjjxsQ/viewform">アンケート</a></li>
+      </ul>
+          <!-- 🌟 右上：ガラスデザインボタン -->
+    <a href="https://2026hkr-fes-panf.n-hinata-lab.workers.dev/" class="glass-btn">
       <!-- アイコン領域（画像パスを変更可能） -->
       <span class="btn-icon-wrapper">
         <img src="picture/change.svg" alt="" class="btn-icon">
       </span>
       <!-- テキスト領域（自由に変更可能） -->
-      <span class="btn-text">混雑状況ページはこちら！</span>
+      <span class="btn-text">電子パンフレット</span>
     </a>
-      </div>
-
-      <!-- 右側：ロゴ画像と著作権表記 -->
-      <div class="footer-brand">
-        <img src="picture/img_logo_top_en.svg" alt="HAKURYO" class="footer-logo">
-        <p class="copyright">© 全ての画像の私版・２次利用をお断りします</p>
-      </div>
-
     </div>
-  </footer>
+
+    <!-- 右側：ロゴ画像と著作権表記 -->
+    <div class="footer-brand">
+      <!-- ⚠️ srcの画像パスはご自身の画像ファイル名に書き換えてください -->
+      <img src="picture/img_logo_top_en.svg" alt="HAKURYO" class="footer-logo">
+      <p class="copyright">© 全ての画像の私版・２次利用をお断りします</p>
+    </div>
+
+  </div>
+</footer>
+
+
+  <!-- ⚙️ プログラム部分（超スッキリ共通化しました！） -->
+  <script>
+    // 🎞️ YouTube風カウンターの数字アニメーション処理
+    function updateYouTubeCounter(targetNumber) {
+      const counterContainer = document.getElementById('total-preview');
+      const targetStr = String(targetNumber);
+      let currentContainers = counterContainer.querySelectorAll('.digit-container');
+  
+      // 初回、または桁数が変わった場合は構造を一度リセットして作り直す
+      if (currentContainers.length !== targetStr.length) {
+        counterContainer.innerHTML = '';
+        for (let i = 0; i < targetStr.length; i++) {
+          const container = document.createElement('div');
+          container.className = 'digit-container';
+      
+          const strip = document.createElement('div');
+          strip.className = 'digit-strip';
+      
+          // 0から9までの数字テープを作成
+          for (let j = 0; j <= 9; j++) {
+            const span = document.createElement('span');
+            span.innerText = j;
+            strip.appendChild(span);
+          }
+      
+          container.appendChild(strip);
+          counterContainer.appendChild(container);
+        }
+        currentContainers = counterContainer.querySelectorAll('.digit-container');
+      }
+
+      // 各桁のテープを目標の数字の位置まで上にスライド（1文字48px）
+      setTimeout(() => {
+        currentContainers.forEach((container, index) => {
+          const strip = container.querySelector('.digit-strip');
+          const digit = parseInt(targetStr[index], 10);
+          const moveY = -(digit * 48); 
+          strip.style.transform = `translateY(${moveY}px)`;
+        });
+      }, 50);
+    }
+
+    // 🌐 全体の累計アクセス数を取得
+    function fetchTotalAccess() {
+      const url = "https://7gyo1hpak1.execute-api.ap-southeast-2.amazonaws.com/";
+      fetch(url, { mode: 'cors' })
+        .then(response => {
+          if (!response.ok) throw new Error('ネットワークエラー');
+          return response.json();
+        })
+        .then(data => {
+          if (data.total_access) {
+            updateYouTubeCounter(data.total_access);
+          }
+        })
+        .catch(error => {
+          console.error("カウンター読み込みエラー:", error);
+          document.getElementById('total-preview').innerText = "---";
+        });
+    }
+
+    // 🔴【新機能】すべてのクラスの混雑状況を1つで処理する共通関数
+    function fetchClassStatus(className, url) {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const badge = document.getElementById(`status${className}`);
+          const timeElement = document.getElementById(`time${className}`);
+          
+          badge.innerText = data.status;
+          
+          // ステータスに応じた色変更ルール
+          if (data.status === "空いています") {
+            badge.style.backgroundColor = "#28a745"; // 緑
+            badge.style.color = "white";
+          } else if (data.status === "やや混雑") {
+            badge.style.backgroundColor = "#ffc107"; // 黄
+            badge.style.color = "#333";
+          } else if (data.status === "混雑") {
+            badge.style.backgroundColor = "#fd7e14"; // オレンジ
+            badge.style.color = "white";
+          } else if (data.status === "とても混雑") {
+            badge.style.backgroundColor = "#dc3545"; // 赤
+            badge.style.color = "white";
+          }
+          
+          const now = new Date();
+          timeElement.innerText = "最終更新: " + now.toLocaleTimeString();
+        })
+        .catch(error => {
+          const badge = document.getElementById(`status${className}`);
+          badge.innerText = "エラー";
+          badge.style.backgroundColor = "#dc3545";
+          badge.style.color = "white";
+          console.error(`${className} Error:`, error);
+        });
+    }
+
+    // 各クラスの名前とAPIのURLの対応表（データマップ）
+    const classApiMap = {
+      "1B": "https://tpczi8ln6d.execute-api.ap-southeast-2.amazonaws.com/",
+      "1C": "https://auf0gmxo11.execute-api.ap-southeast-2.amazonaws.com/",
+
+      "2B": "https://9em8vixtjf.execute-api.ap-southeast-2.amazonaws.com/",
+      "2C": "https://qnuphfbbn0.execute-api.ap-southeast-2.amazonaws.com/",
+      "2D": "https://cz0vnh5o16.execute-api.ap-southeast-2.amazonaws.com/",
+      "3A": "https://9dr47jidx0.execute-api.ap-southeast-2.amazonaws.com/",
+      "3B": "https://mmu1ftlc3i.execute-api.ap-southeast-2.amazonaws.com/",
+      "3C": "https://1cacs3eo4d.execute-api.ap-southeast-2.amazonaws.com/",
+
+    };
+
+    // すべてのクラスを一括更新する関数
+// すべてのクラスを「時間差」で順番に更新する関数（通信の詰まりを防止）
+    function refreshAllClasses() {
+      Object.keys(classApiMap).forEach((className, index) => {
+        // 1クラスごとに 100ms × index 秒ずつ実行タイミングをずらす
+        setTimeout(() => {
+          fetchClassStatus(className, classApiMap[className]);
+        }, index * 200); 
+      });
+    }
+
+    // 🚀 画面が開いた瞬間に通信をスタート
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchTotalAccess();    // アクセスカウントを取得（初回のみ）
+      refreshAllClasses();   // 全クラスの混雑状況を一括取得
+      
+      // 1分ごとに混雑状況だけを自動更新
+      setInterval(() => {
+        refreshAllClasses();
+      }, 60000); 
+    });
+
+
+    
+  </script>
+
 
 </body>
 </html>
