@@ -33,6 +33,97 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+/* ヘッダー全体（背景は青のままにします） */
+.site-header {
+  width: 100%;
+  background-color: #4289B9; /* 背景色（青系） */
+  padding: 15px 20px;
+  box-sizing: border-box;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🌟 ガラスデザインボタンの本体（グラデーション適用版） */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px 8px 10px;
+  
+  /* 🎨 ガラスデザイン ＋ 紫色のグラデーション */
+  /* 左（濃い紫）から右（少し明るい紫/ピンク寄り）へ向かうグラデーション。
+     透明度(0.7〜0.5)を持たせることで、ガラスの質感を保ちます。 */
+  background: linear-gradient(
+    90deg, 
+    rgba(24, 115, 41, 0.7) 0%,   /* 左側：濃い紫 */
+    rgba(0, 181, 48, 0.5) 100% /* 右側：明るい紫 */
+  );
+  
+  /* ガラスの質感（ぼかし） */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* 薄い白枠（ガラスっぽさを強調） */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  
+  /* 角丸（カプセル型） */
+  border-radius: 50px;
+  
+  /* テキスト装飾 */
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 1px;
+  
+  /* アニメーションと影 */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* マウスホバー時の演出（少し明るく、ホバー感を出す） */
+.glass-btn:hover {
+  background: linear-gradient(
+    90deg, 
+    rgba(24, 115, 41, 0.8) 0%,   /* 少し明るく濃く */
+    rgba(0, 181, 48, 0.6) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 左側アイコンの背景丸枠（紫背景に馴染むように調整） */
+.btn-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  /* アイコン周りも少し紫がかった透明枠に */
+  background: rgba(255, 255, 255, 0.15); 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+/* アイコン画像自体のサイズ調整 */
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ボタン内のテキスト */
+.btn-text {
+  white-space: nowrap;
+}
+
     /* メインレイアウト */
     .main-container {
       display: flex;
@@ -393,7 +484,26 @@ html, body {
   </style>
 </head>
 <body>
-  <header>総合情報サイト</header>
+  <header>
+      <div class="header-container">
+    
+    <!-- 左側：ヘッダーロゴやタイトル等（必要に応じて記述） -->
+    <div class="header-logo">
+      総合情報サイト
+    </div>
+
+    <!-- 🌟 右上：ガラスデザインボタン -->
+    <a href="https://2026hkr-fes-panf.n-hinata-lab.workers.dev/" class="glass-btn">
+      <!-- アイコン領域（画像パスを変更可能） -->
+      <span class="btn-icon-wrapper">
+        <img src="picture/change.svg" alt="" class="btn-icon">
+      </span>
+      <!-- テキスト領域（自由に変更可能） -->
+      <span class="btn-text">電子パンフレット</span>
+    </a>
+
+  </div>
+  </header>
 
   <div class="main-container">
     
